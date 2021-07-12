@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     Vector2 movement;
     void Update()
     {
+        Camera.main.transform.position = new Vector3 (rb.transform.position.x, rb.transform.position.y, Camera.main.transform.position.z);
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
 
