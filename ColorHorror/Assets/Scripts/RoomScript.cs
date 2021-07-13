@@ -33,5 +33,6 @@ public class RoomScript : MonoBehaviour
             RoomManager.Instance.inUpperRoom = true;
         }
         RoomManager.Instance.ChangeActiveRoom();
+
     }
 }
