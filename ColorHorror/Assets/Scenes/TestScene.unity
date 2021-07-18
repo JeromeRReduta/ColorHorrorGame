@@ -368,6 +368,7 @@ GameObject:
   - component: {fileID: 143183799}
   - component: {fileID: 143183801}
   - component: {fileID: 143183800}
+  - component: {fileID: 143183802}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -392,8 +393,6 @@ MonoBehaviour:
   Playerbody: {fileID: 143183797}
   VertInput: 0
   HorInput: 0
-  m_GotHitScreen: {fileID: 207294928}
-  Enemy: {fileID: 1890957840}
 --- !u!50 &143183797
 Rigidbody2D:
   serializedVersion: 4
@@ -515,6 +514,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &143183802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 143183795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd58722d5199fc645941407ba1b75da9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_GotHitScreen: {fileID: 207294928}
 --- !u!1 &207294928
 GameObject:
   m_ObjectHideFlags: 0

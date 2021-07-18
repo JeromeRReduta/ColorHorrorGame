@@ -14,8 +14,7 @@ public class TempPlayer : MonoBehaviour
     [HideInInspector] public float VertInput;
     [HideInInspector] public float HorInput;
 
-    public GameObject m_GotHitScreen;
-    public CapsuleCollider2D Enemy;
+    
 
     void Start()
     {
@@ -35,23 +34,5 @@ public class TempPlayer : MonoBehaviour
         Vector2 WhereAmI = Playerbody.position;
         Vector2 WhereTo = WhereAmI + (InputDir * CharacterSpeed) * Time.fixedDeltaTime;
         Playerbody.MovePosition(WhereTo);
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject== Enemy)
-        {
-            playerHurt();
-            Debug.Log("I AM HIT");
-        }
-    }
-
-    void playerHurt()
-    {
-       var color =  m_GotHitScreen.GetComponent<Image>().color;
-       color.a = 0.8f;
-
-       m_GotHitScreen.GetComponent<Image>().color = color;
-
     }
 }
