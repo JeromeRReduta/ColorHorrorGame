@@ -10,7 +10,7 @@ public class PlayerCollsion : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.tag == "enemy")
         {
             playerHurt();
             Debug.Log("I AM HIT");
