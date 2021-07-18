@@ -154,7 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1
   data:
-    dataString: UEsDBBQAAAgIAACQn+umw6WDbgIAABAFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFlVE1z2jAQ/SuMziVjG4Oht5YQ0kM+JrSTiy/CWmMNsuSR5ADJ8N+7kgV26Qnxdvfp7duVvwiXpoHCKr3WnD0pBuT7iLgz+Tbqg49wpDslN/wTLjnvnNnKJVGf80YtV4jHrsyoGqzmxQ+5Ey45QrCVvFS6XrEdLJWxBuGSCgMY0sq6aonQ14gc8We8cCUnPCWZO33iaRGNzngsQFrQfWp0F82zaZJM41AxTid383SWRbM0VI4zBKI0mqzG0cyTtLIQtG6AuY56rukscKRznyax15Dh2AslBDdBKLGnxhuxaSrQ4JxgnGLfXtwE/1bAd5V1PQxrX8rSgA2maHq65xrt60jJT9V5WlOz72R9UNH6+5NOUkf69F98HPtwqVX9eLk3jtwdtuLF/o2eCmrswPQhfN8Lj707Byr2dCvgvQL5rNZatZJh0OrWlbYGkvv+77W1ZQXFvsc7qTdg2wxGF9y+TNj1cPbdH5eC11s/3bQDNkJ5u/1igMbB/ELBfm1MoEDUqfhj4DfdDfcrBB64NhZDoUvp5G1Vq10qWXnPXDetXSotwcNBdAOSCnt6RRp7O8Kb2ODam8gDdS8pXB5ilwdyU+LhPj+KbkKv6nAdlqnU4QlM9dJawSX0ol3gGX1aKim7DRt6cinbtLqkxaBs13L272qRebzdzuZZkiVsGsOWjpNyni3KMp3iMwNYLIjfPS6xTypeO6HBHpya7Mkl7tnlAzNaa9r4bWeaHtb8s1YDy7ks1abQAPKlY7gKB42X4KNkK8bRoA1Yy6WfN/nKiVDFHlh+Jcp9p6uj1TTvWXLS8A9lHZKTpf+i5ORMzn8BUEsDBBQAAAgIAACQn+sqzvDJbQAAAHgAAAAJACQAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0Bq1YqSy0qzszPU7JSMNEz0jM01VFQSi9KLMgoBooYgjilmSkgdrSShWFSkpmFuZG5UYqpYWpSoq5RmoW5ZVqaiamJmXlqqqWlUixQfUllQapfYm4qRE9AYklGWmZeSmZeup57UWaKO8hopdhaAFBLAQItABQAAAgIAACQn+umw6WDbgIAABAFAAALACQAAAAAAAAAAAAAAAAAAABncmFwaDAuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLAQItABQAAAgIAACQn+sqzvDJbQAAAHgAAAAJACQAAAAAAAAAAAAAALsCAABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwUGAAAAAAIAAgC4AAAAcwMAAAAA
+    dataString: UEsDBBQAAAgIAACYn+umw6WDbgIAABAFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFlVE1z2jAQ/SuMziVjG4Oht5YQ0kM+JrSTiy/CWmMNsuSR5ADJ8N+7kgV26Qnxdvfp7duVvwiXpoHCKr3WnD0pBuT7iLgz+Tbqg49wpDslN/wTLjnvnNnKJVGf80YtV4jHrsyoGqzmxQ+5Ey45QrCVvFS6XrEdLJWxBuGSCgMY0sq6aonQ14gc8We8cCUnPCWZO33iaRGNzngsQFrQfWp0F82zaZJM41AxTid383SWRbM0VI4zBKI0mqzG0cyTtLIQtG6AuY56rukscKRznyax15Dh2AslBDdBKLGnxhuxaSrQ4JxgnGLfXtwE/1bAd5V1PQxrX8rSgA2maHq65xrt60jJT9V5WlOz72R9UNH6+5NOUkf69F98HPtwqVX9eLk3jtwdtuLF/o2eCmrswPQhfN8Lj707Byr2dCvgvQL5rNZatZJh0OrWlbYGkvv+77W1ZQXFvsc7qTdg2wxGF9y+TNj1cPbdH5eC11s/3bQDNkJ5u/1igMbB/ELBfm1MoEDUqfhj4DfdDfcrBB64NhZDoUvp5G1Vq10qWXnPXDetXSotwcNBdAOSCnt6RRp7O8Kb2ODam8gDdS8pXB5ilwdyU+LhPj+KbkKv6nAdlqnU4QlM9dJawSX0ol3gGX1aKim7DRt6cinbtLqkxaBs13L272qRebzdzuZZkiVsGsOWjpNyni3KMp3iMwNYLIjfPS6xTypeO6HBHpya7Mkl7tnlAzNaa9r4bWeaHtb8s1YDy7ks1abQAPKlY7gKB42X4KNkK8bRoA1Yy6WfN/nKiVDFHlh+Jcp9p6uj1TTvWXLS8A9lHZKTpf+i5ORMzn8BUEsDBBQAAAgIAACYn+sqzvDJbQAAAHgAAAAJACQAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0Bq1YqSy0qzszPU7JSMNEz0jM01VFQSi9KLMgoBooYgjilmSkgdrSShWFSkpmFuZG5UYqpYWpSoq5RmoW5ZVqaiamJmXlqqqWlUixQfUllQapfYm4qRE9AYklGWmZeSmZeup57UWaKO8hopdhaAFBLAQItABQAAAgIAACYn+umw6WDbgIAABAFAAALACQAAAAAAAAAAAAAAAAAAABncmFwaDAuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLAQItABQAAAgIAACYn+sqzvDJbQAAAHgAAAAJACQAAAAAAAAAAAAAALsCAABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwUGAAAAAAIAAgC4AAAAcwMAAAAA
     upgradeData: 
     file_cachedStartup: {fileID: 0}
     data_cachedStartup: 
@@ -392,6 +392,7 @@ MonoBehaviour:
   Playerbody: {fileID: 143183797}
   VertInput: 0
   HorInput: 0
+  m_GotHitScreen: {fileID: 207294928}
 --- !u!50 &143183797
 Rigidbody2D:
   serializedVersion: 4
@@ -540,14 +541,14 @@ RectTransform:
   m_GameObject: {fileID: 207294928}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -123.1462}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 11.245414, y: 5.5246634, z: 1}
   m_Children: []
   m_Father: {fileID: 230124527}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 9.068256, y: -46.95378}
+  m_AnchoredPosition: {x: 9.068256, y: -20}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &207294930
@@ -563,14 +564,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: a827cc5c2ab32ef46be9e731a8831cb0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2141,7 +2142,7 @@ GameObject:
   - component: {fileID: 1890957842}
   m_Layer: 0
   m_Name: TempEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
