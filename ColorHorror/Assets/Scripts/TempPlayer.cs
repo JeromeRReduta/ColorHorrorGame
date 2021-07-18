@@ -41,6 +41,7 @@ public class TempPlayer : MonoBehaviour
         if (collision.gameObject.tag == "Enemy")
         {
             playerHurt();
+            Debug.Log("I AM HIT");
         }
     }
 
