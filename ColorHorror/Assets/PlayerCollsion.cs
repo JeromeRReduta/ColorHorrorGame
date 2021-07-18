@@ -7,6 +7,7 @@ public class PlayerCollsion : MonoBehaviour
 {
 
     public GameObject m_GotHitScreen;
+    public CameraShake cameraShake;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -21,8 +22,8 @@ public class PlayerCollsion : MonoBehaviour
     {
        var color =  m_GotHitScreen.GetComponent<Image>().color;
        color.a = 0.8f;
-
        m_GotHitScreen.GetComponent<Image>().color = color;
+       StartCoroutine(cameraShake.Shake(.15f,.4f));
 
     }
 
@@ -40,9 +41,10 @@ public class PlayerCollsion : MonoBehaviour
             if (m_GotHitScreen.GetComponent<Image>().color.a > 0){
                 var color = m_GotHitScreen.GetComponent<Image>().color;
 
-                color.a -= 0.1f;
+                color.a -= 0.001f;
                 m_GotHitScreen.GetComponent<Image>().color = color;
             }
         }
     }
+
 }
