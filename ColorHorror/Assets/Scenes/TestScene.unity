@@ -393,6 +393,7 @@ MonoBehaviour:
   VertInput: 0
   HorInput: 0
   m_GotHitScreen: {fileID: 207294928}
+  Enemy: {fileID: 1890957840}
 --- !u!50 &143183797
 Rigidbody2D:
   serializedVersion: 4

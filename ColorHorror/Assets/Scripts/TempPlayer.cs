@@ -15,6 +15,7 @@ public class TempPlayer : MonoBehaviour
     [HideInInspector] public float HorInput;
 
     public GameObject m_GotHitScreen;
+    public CapsuleCollider2D Enemy;
 
     void Start()
     {
@@ -38,7 +39,7 @@ public class TempPlayer : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Enemy")
+        if (collision.gameObject== Enemy)
         {
             playerHurt();
             Debug.Log("I AM HIT");
