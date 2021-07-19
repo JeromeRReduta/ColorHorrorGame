@@ -943,6 +943,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96f35a14aaeff5e4c9d2e444dd578c6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Path: {fileID: 725782880}
   chargeSpeed: 25
 --- !u!114 &725782879
 MonoBehaviour:
