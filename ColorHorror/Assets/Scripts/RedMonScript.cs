@@ -3,30 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
 
-public class RedMonScript : MonoBehaviour
+public class RedMonScript : Monster
 {
-    public AIPath aiPath;
-    Collider2D col;
-    Rigidbody2D rb;
+    public AIPath Path;
     public int chargeSpeed = 200;
     bool completed = true;
 
-    void Start()
+    public override void Update()
     {
-        col = GetComponent<Collider2D>();
-        rb = GetComponent<Rigidbody2D>();
-    }
-
-    void Update()
-    {
-        Vector3 dest = aiPath.destination;
-        RaycastHit2D hit = Physics2D.Linecast(rb.transform.position, dest, LayerMask.GetMask("Walls", "Player"));
+        Vector3 dest = Path.destination;
+        RaycastHit2D hit = Physics2D.Linecast(base.Rb.transform.position, dest, LayerMask.GetMask("Walls", "Player"));
         if (hit.collider != null)
         {
-            if (hit.collider.gameObject.CompareTag("Player") && completed == true)
+            if (hit.collider.gameObject.CompareTag("Player") && completed)
             {
-                // Debug.Log("dest: " + dest);
-                // rb.AddForce(player.position, ForceMode2D.Impulse);
                 completed = false;
                 StartCoroutine(Wait());
             }
@@ -36,27 +26,22 @@ public class RedMonScript : MonoBehaviour
 
     IEnumerator Wait()
     {
-        Vector3 playerLocation = aiPath.destination;
-        Vector3 AILocation = gameObject.transform.position;
-        aiPath.enabled = false;
+        Vector3 charge = (Path.destination - gameObject.transform.position).normalized * chargeSpeed;
+        Path.enabled = false;
 
-        Vector3 newForce2 = playerLocation - AILocation;
-        Vector3 temp = newForce2.normalized;
-
-        rb.velocity = new Vector2 (0f, 0f);
-        rb.AddForce(temp * 10, ForceMode2D.Impulse);
-
-
-        Debug.Log("coordinate of player: " + playerLocation);
-        Debug.Log("force: " + newForce2);
+        base.Rb.velocity = new Vector2 (0f, 0f);
+        base.Rb.AddForce(charge, ForceMode2D.Impulse);
+        Debug.Log("coordinate of player: " + Path.destination);
+        Debug.Log("force (charge): " + charge);
         Debug.Log("---------");
         yield return new WaitForSeconds(2);
         completed = true;
-        aiPath.enabled = true;
+        Path.enabled = true;
     }
 
     void OnCollisionEnter()
     {
-        rb.velocity = new Vector2(0f, 0f);
+        base.Rb.velocity = new Vector2(0f, 0f);
     }
+    
 }
