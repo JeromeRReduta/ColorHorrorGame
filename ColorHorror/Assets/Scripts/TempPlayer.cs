@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TempPlayer : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class TempPlayer : MonoBehaviour
     public Rigidbody2D Playerbody;
     Vector2 movement;
     Animator animator;
+
+    
 
     void Start()
     {
