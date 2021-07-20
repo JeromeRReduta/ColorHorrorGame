@@ -7,7 +7,7 @@ public class CameraShaker : MonoBehaviour
     public float power = 0.7f;
     public float duration = 1.0f;
 
-    public Transform camera;
+    public Transform camera1;
     public float slowDownAmount = 1.0f;
     public bool shouldShake = false;
 
@@ -18,23 +18,23 @@ public class CameraShaker : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        camera = Camera.main.transform;
-        startPos = camera.localPosition;
+        camera1 = Camera.main.transform;
         initialDuration = duration;
     }
 
     // Update is called once per frame
     void Update()
     {
+        startPos = camera1.localPosition;
         if(shouldShake){
             if(duration > 0){
-                camera.localPosition = startPos + Random.insideUnitSphere * power;
+                camera1.localPosition = startPos + Random.insideUnitSphere * power;
                 duration -= Time.deltaTime * slowDownAmount;
             }
             else{
                 shouldShake = false;
                 duration = initialDuration;
-                camera.localPosition = startPos;
+                // camera1.localPosition = startPos;
             }
         }
     }

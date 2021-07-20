@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TempPlayer : MonoBehaviour
+public class Player : MonoBehaviour
 {
-
-    public static TempPlayer Instance;
-    [SerializeField] private float CharacterSpeed = 1.0f;
+    int health = 2;
+    bool recentlyHit = false;
+    public static Player Instance;
+    [SerializeField] private float CharacterSpeed = 12f;
     [HideInInspector] public Vector2 InputDir;
     
     public Rigidbody2D Playerbody;
@@ -42,6 +43,8 @@ public class TempPlayer : MonoBehaviour
         {
             transform.localScale = new Vector3(-1f, 1f, 1f);
         }
+
+        CollideWithMonster();
     }
 
     void FixedUpdate()
@@ -49,4 +52,33 @@ public class TempPlayer : MonoBehaviour
         Playerbody.MovePosition(Playerbody.position + movement * CharacterSpeed * Time.fixedDeltaTime);
     }
 
+    void CollideWithMonster()
+    {
+        if (Playerbody.IsTouchingLayers(LayerMask.GetMask("Monster")) && recentlyHit == false)
+        {
+            StartCoroutine(TakeDamage());
+        }
+    }
+
+    IEnumerator TakeDamage()
+    {
+        recentlyHit = true;
+        health--;
+        if (health > 0)
+        {
+            Debug.Log("Took damage.");
+        }
+        else
+        {
+            PlayerDeath();
+        }
+        yield return new WaitForSeconds(2);
+        recentlyHit = false;
+    }
+
+    void PlayerDeath()
+    {
+        Debug.Log("Player theoretically died.");
+        health = 2;
+    }
 }
