@@ -270,7 +270,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1639102017
 PrefabInstance:
@@ -359,8 +359,8 @@ GameObject:
   - component: {fileID: 1929544132}
   - component: {fileID: 1929544131}
   - component: {fileID: 1929544134}
-  - component: {fileID: 1929544130}
   - component: {fileID: 1929544135}
+  - component: {fileID: 1929544130}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -377,12 +377,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1929544129}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18e2f1fa62308174cbd6094a0da66ccb, type: 3}
+  m_Script: {fileID: 11500000, guid: e8d2c53194290a84eb7e4350312127bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CharacterSpeed: 1
-  InputDir: {x: 0, y: 0}
-  Playerbody: {fileID: 0}
+  moveSpeed: 5
+  rb: {fileID: 1929544131}
 --- !u!50 &1929544131
 Rigidbody2D:
   serializedVersion: 4
@@ -398,7 +397,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
