@@ -283,8 +283,8 @@ GameObject:
   - component: {fileID: 1929544133}
   - component: {fileID: 1929544132}
   - component: {fileID: 1929544131}
-  - component: {fileID: 1929544130}
   - component: {fileID: 1929544134}
+  - component: {fileID: 1929544130}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -301,11 +301,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1929544129}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8d2c53194290a84eb7e4350312127bc, type: 3}
+  m_Script: {fileID: 11500000, guid: 18e2f1fa62308174cbd6094a0da66ccb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
-  rb: {fileID: 1929544131}
+  CharacterSpeed: 1
+  InputDir: {x: 0, y: 0}
+  Playerbody: {fileID: 0}
 --- !u!50 &1929544131
 Rigidbody2D:
   serializedVersion: 4
