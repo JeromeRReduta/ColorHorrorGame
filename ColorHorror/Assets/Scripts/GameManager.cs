@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    LevelLoader levelLoader;
    public void CompleteLevel ()
    {
-       Debug.Log("Level Complete");
+       levelLoader.LoadNextLevel();
    } 
 }
