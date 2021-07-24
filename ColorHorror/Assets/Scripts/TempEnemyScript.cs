@@ -17,15 +17,8 @@ public class TempEnemyScript : MonoBehaviour
     void Update()
     {
         
-        if (this.gameObject.GetComponentInParent<RedMonsterNew>().recoil.x >= 0.01f && this.gameObject.GetComponentInParent<RedMonsterNew>().recoiling == true)
-        {
-            transform.localScale = new Vector3(-1f, 1f, 1f);
-        }
-        else if (this.gameObject.GetComponentInParent<RedMonsterNew>().recoil.x <= 0.01f && this.gameObject.GetComponentInParent<RedMonsterNew>().recoiling == true)
-        {
-            transform.localScale = new Vector3(1f, 1f, 1f);
-        }
-        else if (aiPath.desiredVelocity.x >= 0.01f || rb.velocity.x >= 0.01f)
+
+        if (aiPath.desiredVelocity.x >= 0.01f || rb.velocity.x >= 0.01f)
         {
             transform.localScale = new Vector3(1f, 1f, 1f);
         }

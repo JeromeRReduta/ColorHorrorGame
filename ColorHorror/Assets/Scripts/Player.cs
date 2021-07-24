@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
     int health = 2;
     bool recentlyHit = false;
     public static Player Instance;
-    [SerializeField] private float CharacterSpeed = 12f;
+    [SerializeField] private float CharacterSpeed = 14f;
     [HideInInspector] public Vector2 InputDir;
     
     public Rigidbody2D Playerbody;

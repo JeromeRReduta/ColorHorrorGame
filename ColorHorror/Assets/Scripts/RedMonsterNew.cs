@@ -26,7 +26,7 @@ public class RedMonsterNew : Monster
 
     /** Adds backwards momentum after hitting a collider */
     [HideInInspector] public Vector3 recoil;
-    [HideInInspector] public bool recoiling;
+    private int slowDown = 0;
 
     /**
     Attempts to charge at player every 2 seconds
@@ -46,6 +46,11 @@ public class RedMonsterNew : Monster
             completed = false;
             StartCoroutine(Charge());
         }
+        if (slowDown > 3)
+            {
+                base.Rb.velocity = new Vector2 (0f, 0f); 
+                Path.enabled = true;
+            }
         
         Debug.DrawLine(chargeUp.transform.position, dest, Color.blue);
         Debug.DrawLine(chargeDown.transform.position, dest, Color.blue);
@@ -54,47 +59,44 @@ public class RedMonsterNew : Monster
     }
 
     /**
-    Charge at player every 2 seconds
+    Charge at player every 4 seconds
     */
     IEnumerator Charge() // TODO: Make red monster walk towards player when not charging (low-priority)
     {
         Vector3 charge = (Path.destination - gameObject.transform.position).normalized * chargeSpeed;
-        recoil = new Vector3 (charge.x * -1, charge.y * -1, charge.z).normalized;
+        slowDown = 0;
+        recoil = charge.normalized;
 
         Path.enabled = false;
 
         base.Rb.velocity = new Vector2 (0f, 0f);
         base.Rb.AddForce(charge, ForceMode2D.Impulse);
         
-        yield return new WaitForSeconds(2);
-
-        StartCoroutine(FollowPlayerInBetweenCharges());
+        yield return new WaitForSeconds(4);
+        
+        completed = true;
+        Path.enabled = true;
+        // StartCoroutine(FollowPlayerInBetweenCharges());
         
     }
 
     IEnumerator FollowPlayerInBetweenCharges()
     {
         Path.enabled = true;
-        recoiling = false;
-        yield return new WaitForSeconds(2);
+        
+        yield return new WaitForSeconds(1);
         completed = true;
     }
 
     // Was thinking of making it so that each monster has a different response to colliding
     // Like Red Monster has recoil momentum for example
-    void OnCollisionEnter2D()
+    void OnCollisionEnter2D(Collision2D collision)
     {
-        Path.enabled = false;
+        Vector3 reflectVector = collision.contacts[0].normal;
+        slowDown++;
         base.Rb.velocity = new Vector2 (0f, 0f);
-        recoiling = true;
-        base.Rb.AddForce(recoil * 100f);
-        StartCoroutine(Recoil());
+        base.Rb.velocity = Vector3.Reflect(recoil, reflectVector) * 20;
+        recoil = base.Rb.velocity.normalized;
 
-    }
-    IEnumerator Recoil()
-    {
-        yield return new WaitForSeconds(1);
-        base.Rb.velocity = new Vector2(0f, 0f);
-        Path.enabled = true;
     }
 }
