@@ -84,6 +84,7 @@ public class RedMonsterNew : Monster
     // Like Red Monster has recoil momentum for example
     void OnCollisionEnter2D()
     {
+        Path.enabled = false;
         base.Rb.velocity = new Vector2 (0f, 0f);
         recoiling = true;
         base.Rb.AddForce(recoil * 100f);
@@ -94,5 +95,6 @@ public class RedMonsterNew : Monster
     {
         yield return new WaitForSeconds(1);
         base.Rb.velocity = new Vector2(0f, 0f);
+        Path.enabled = true;
     }
 }
