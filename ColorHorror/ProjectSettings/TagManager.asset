@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Door
   - enemy
+  - Monster
   layers:
   - Default
   - TransparentFX
@@ -17,9 +18,9 @@ TagManager:
   - Walls
   - Player
   - Monster
-  - 
-  - 
-  - 
+  - UpperRoom
+  - Hallway
+  - MidRoom
   - 
   - 
   - 

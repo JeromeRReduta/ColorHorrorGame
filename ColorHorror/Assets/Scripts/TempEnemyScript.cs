@@ -16,6 +16,8 @@ public class TempEnemyScript : MonoBehaviour // TODO: Merge this into monster
     }
     void Update()
     {
+        
+
         if (aiPath.desiredVelocity.x >= 0.01f || rb.velocity.x >= 0.01f)
         {
             transform.localScale = new Vector3(1f, 1f, 1f);
@@ -23,6 +25,10 @@ public class TempEnemyScript : MonoBehaviour // TODO: Merge this into monster
         else if (aiPath.desiredVelocity.x <= -0.01f || rb.velocity.x <= 0.01f)
         {
             transform.localScale = new Vector3(-1f, 1f, 1f);
+        }
+        else 
+        {
+            return;
         }
 
         float distX = Mathf.Abs(gameObject.transform.position.x - aiPath.destination.x);

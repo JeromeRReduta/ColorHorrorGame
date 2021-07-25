@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class TempPlayer : MonoBehaviour
 {
@@ -10,14 +9,12 @@ public class TempPlayer : MonoBehaviour
     [SerializeField] private float CharacterSpeed = 1.0f;
     [HideInInspector] public Vector2 InputDir;
     
-    public Rigidbody2D Playerbody;
     Vector2 movement;
     Animator animator;
 
     public Vector3 FuturePoint {get; private set;}
 
     
-
     void Start()
     {
         Instance = this;
@@ -78,4 +75,5 @@ public class TempPlayer : MonoBehaviour
     {
         Playerbody.MovePosition(Playerbody.position + movement * CharacterSpeed * Time.fixedDeltaTime);
     }
+
 }
