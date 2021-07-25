@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
 
-public class TempEnemyScript : MonoBehaviour
+public class TempEnemyScript : MonoBehaviour // TODO: Merge this into monster
 {
     public AIPath aiPath;
     Animator animator;
