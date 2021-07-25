@@ -14456,6 +14456,11 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!95 &308349166 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4091925285041538640, guid: e9d394d2d146d404e8e7431d5f0f07b3, type: 3}
+  m_PrefabInstance: {fileID: 380076932}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &309267697
 GameObject:
   m_ObjectHideFlags: 0
@@ -19784,12 +19789,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1749767898801005334, guid: e9d394d2d146d404e8e7431d5f0f07b3, type: 3}
+      propertyPath: transition
+      value: 
+      objectReference: {fileID: 308349166}
+    - target: {fileID: 1749767898801005334, guid: e9d394d2d146d404e8e7431d5f0f07b3, type: 3}
       propertyPath: transitionTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5583941073455546936, guid: e9d394d2d146d404e8e7431d5f0f07b3, type: 3}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6867896737870959710, guid: e9d394d2d146d404e8e7431d5f0f07b3, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6867896739567115536, guid: e9d394d2d146d404e8e7431d5f0f07b3, type: 3}
       propertyPath: m_Name
