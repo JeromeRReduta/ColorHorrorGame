@@ -8,10 +8,12 @@ public class TempPlayer : MonoBehaviour
     public static TempPlayer Instance;
     [SerializeField] private float CharacterSpeed = 1.0f;
     [HideInInspector] public Vector2 InputDir;
+
+
     
     Vector2 movement;
     Animator animator;
-
+    public Rigidbody2D Playerbody;
     public Vector3 FuturePoint {get; private set;}
 
     
