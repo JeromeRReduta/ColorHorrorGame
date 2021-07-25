@@ -14,7 +14,7 @@ public class PlayerCollsion : MonoBehaviour
         if (collision.gameObject.tag == "enemy")
         {
             playerHurt();
-            StartCoroutine(cameraShake.Shake(.15f, .4f));
+            //StartCoroutine(cameraShake.Shake(.15f, .4f));
             Debug.Log("I AM HIT");
         }
     }
