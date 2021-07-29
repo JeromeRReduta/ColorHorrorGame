@@ -7,6 +7,7 @@ public class ChangePlayerColor : MonoBehaviour
 {
     public float paintTime = 10f;
     public AIPath Path;
+    //public GameObject RedMonster;
 
     public PolygonCollider2D redPool;
     private void OnTriggerEnter2D(Collider2D col)
@@ -21,11 +22,16 @@ public class ChangePlayerColor : MonoBehaviour
     {
         transform.GetComponent<Renderer>().material.color = new Color(0,0,0);
         Debug.Log("HIT RED POOL");
-        Path.enabled = false;
+        //Path.enabled = false;
+
+        this.GetComponent<RedMonsterNew>().enabled = false;
+
         yield return new WaitForSeconds(paintTime);
         transform.GetComponent<Renderer>().material.color = new Color(255,255,255);
         Debug.Log("I AM NO LONGER RED");
-        Path.enabled = true;
+        
+        this.GetComponent<RedMonsterNew>().enabled = true;
+        //Path.enabled = true;
     }
 
 
