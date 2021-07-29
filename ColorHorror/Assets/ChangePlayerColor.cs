@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class ChangePlayerColor : MonoBehaviour
 {
+    public PolygonCollider2D redPool;
     private void OnTriggerEnter2D()
     {
-        ChangeColorRed();
+        if(redPool.isTrigger){
+            ChangeColorRed();
+        }
+        
     }
 
     private void ChangeColorRed()
