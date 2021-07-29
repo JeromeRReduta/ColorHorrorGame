@@ -5,7 +5,7 @@ using Pathfinding;
 
 public class ChangePlayerColor : MonoBehaviour
 {
-    public float paintTime = 3f;
+    public float paintTime = 10f;
     public AIPath Path;
 
     public PolygonCollider2D redPool;
