@@ -5,9 +5,9 @@ using UnityEngine;
 public class ChangePlayerColor : MonoBehaviour
 {
     public PolygonCollider2D redPool;
-    private void OnTriggerEnter2D()
+    private void OnTriggerEnter2D(Collider2D col)
     {
-        if(redPool.isTrigger){
+        if(col.gameObject.tag == "RedPool"){
             ChangeColorRed();
         }
         
@@ -15,7 +15,7 @@ public class ChangePlayerColor : MonoBehaviour
 
     private void ChangeColorRed()
     {
-        GetComponent<SpriteRenderer>().material.color = Color.red;
+        transform.GetComponent<Renderer>().material.color = Color.red;
         Debug.Log("HIT RED POOL");
     }
 
