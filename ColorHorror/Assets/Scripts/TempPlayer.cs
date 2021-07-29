@@ -66,10 +66,10 @@ public class TempPlayer : MonoBehaviour
         if (hit != null) {
             float distance = hit.distance > 0 ? hit.distance : CharacterSpeed;
             FuturePoint = hit.distance > 0 ? (Vector3) hit.point : this.transform.position + CharacterSpeed * lineDir;
-            Debug.Log("Distance: " + hit.distance);
-            Debug.DrawLine(this.transform.position, FuturePoint, Color.red, 2, false);
-            Debug.Log("Starting position: " + this.transform.position);
-            Debug.Log("Final position: " + FuturePoint);
+            //Debug.Log("Distance: " + hit.distance);
+            //Debug.DrawLine(this.transform.position, FuturePoint, Color.red, 2, false);
+            //Debug.Log("Starting position: " + this.transform.position);
+            //Debug.Log("Final position: " + FuturePoint);
         }
     }
 
