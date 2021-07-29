@@ -18,11 +18,6 @@ public class PlayerCollision : MonoBehaviour
           
         }
 
-        if(collision.gameObject.tag == "RedPool"){
-            collision.gameObject.GetComponent<SpriteRenderer>().material.color = Color.red;
-            Debug.Log("Hit Red Pool");
-        }
-
     }
 
     void playerHurt()
