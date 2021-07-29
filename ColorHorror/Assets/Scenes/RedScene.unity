@@ -1003,6 +1003,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   paintTime: 10
   Path: {fileID: 1176094953}
+  RedMonster: {fileID: 1176094949}
   redPool: {fileID: 732235901}
 --- !u!1 &708679455
 GameObject:
