@@ -17,6 +17,11 @@ public class PlayerCollision : MonoBehaviour
             StartCoroutine(cameraShake.Shake(.2f, .4f));
           
         }
+
+        if(collision.gameObject.tag == "RedPool"){
+            collision.gameObject.GetComponent<SpriteRenderer>().material.color = Color.red;
+        }
+
     }
 
     void playerHurt()
