@@ -1029,7 +1029,6 @@ GameObject:
   - component: {fileID: 732235903}
   - component: {fileID: 732235902}
   - component: {fileID: 732235901}
-  - component: {fileID: 732235900}
   m_Layer: 0
   m_Name: Good Red Pool_0
   m_TagString: RedPool
@@ -1037,18 +1036,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &732235900
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 732235899}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 349f875316fdb534b9849b4c2311bac8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!60 &732235901
 PolygonCollider2D:
   m_ObjectHideFlags: 0
