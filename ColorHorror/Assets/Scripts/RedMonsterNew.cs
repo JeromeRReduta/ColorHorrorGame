@@ -29,7 +29,7 @@ public class RedMonsterNew : Monster
     private int slowDown = 0;
 
     /**
-    Attempts to charge at player every 2 seconds
+    Attempts to charge at player every 4 seconds
     */
     public override void Update()
     {
