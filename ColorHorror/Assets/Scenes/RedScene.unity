@@ -1718,7 +1718,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1176094949}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.1, y: -51.4, z: 1}
+  m_LocalPosition: {x: -16.79, y: -61.31, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1533612890}
@@ -2113,8 +2113,6 @@ GameObject:
   - component: {fileID: 1533612895}
   - component: {fileID: 1533612894}
   - component: {fileID: 1533612893}
-  - component: {fileID: 1533612892}
-  - component: {fileID: 1533612891}
   m_Layer: 9
   m_Name: TempEnemySkinCharge
   m_TagString: Untagged
@@ -2136,54 +2134,6 @@ Transform:
   m_Father: {fileID: 1176094956}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1533612891
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1533612889}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38f48a8d66b2adc46887f23a3a88ac01, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ShadowGroup: 0
---- !u!114 &1533612892
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1533612889}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ShadowGroup: 0
-  m_HasRenderer: 1
-  m_UseRendererSilhouette: 1
-  m_CastsShadows: 1
-  m_SelfShadows: 0
-  m_ApplyToSortingLayers: 00000000
-  m_ShapePath:
-  - {x: -0.4243753, y: 0.072216034, z: 0}
-  - {x: -0.40094304, y: -2.3911476, z: 0}
-  - {x: 0.70025826, y: -2.429123, z: 0}
-  - {x: 0.62902, y: -1.3244019, z: 0}
-  - {x: 0.53705907, y: -0.79102707, z: 0}
-  - {x: 0.62902, y: -0.36800766, z: 0}
-  - {x: 0.84972644, y: -0.22086716, z: 0}
-  - {x: 1.2175703, y: -0.22086716, z: 0}
-  - {x: 0.66600776, y: 0.5804672, z: 0.0000019073486}
-  - {x: 0.31314242, y: 2.445755, z: 0}
-  - {x: -0.44165993, y: 1.9927025, z: 0}
-  - {x: -0.4561193, y: 1.397644, z: 0}
-  - {x: -1.1366308, y: -0.2024765, z: 0}
-  m_ShapePathHash: 1768336329
-  m_Mesh: {fileID: 0}
-  m_InstanceId: -73052
 --- !u!114 &1533612893
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2256,8 +2206,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: fa192456682da5d43a0cfa59b199411d, type: 3}
-  m_Color: {r: 1, g: 0.30566037, b: 0.30566037, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 64af9ef764d874e41a76aa2c2f99a1d8, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
