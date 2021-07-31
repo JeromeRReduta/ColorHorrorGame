@@ -26,10 +26,10 @@ public abstract class Monster : MonoBehaviour
     public Rigidbody2D Rb {get; private set;}
 
     /** Start */
-    public void Start()
+    public virtual void Start()
     {
         Col = GetComponent<Collider2D>();
-        Rb = GetComponent<Rigidbody2D>();
+        Rb = gameObject.GetComponent<Rigidbody2D>();
     }
 
     /** Update func */
@@ -41,7 +41,9 @@ public abstract class Monster : MonoBehaviour
     */
     public void OnCollisionEnter2D(Collision2D collision)
     {
+        Debug.Log("EH this is fine");
         Rb.velocity = new Vector2(0f, 0f);
+        Debug.Log("GOOD");
         Debug.Log(collision);
         Debug.Log("Name is: " + collision.gameObject.name);
         Debug.Log("string.equals(collision.gameObject.name, Player) is " + string.Equals(collision.gameObject.name, "Player"));
