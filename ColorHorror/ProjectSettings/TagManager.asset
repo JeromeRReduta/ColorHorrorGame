@@ -8,6 +8,7 @@ TagManager:
   - enemy
   - Monster
   - BlueGasLight
+  - SeparateRoom
   layers:
   - Default
   - TransparentFX
