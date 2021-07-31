@@ -14,19 +14,19 @@ public class RoomScript : MonoBehaviour
 
     void Update()
     {
-        if (this.gameObject == hallwayOnly && TempPlayer.Instance.Playerbody.IsTouching(roomCollider))
+        if (this.gameObject == hallwayOnly && Player.Instance.Playerbody.IsTouching(roomCollider))
         {
             RoomManager.Instance.inHallway = true;
             RoomManager.Instance.inMiddleRoom = false;
             RoomManager.Instance.inUpperRoom = false;
         }
-        else if (this.gameObject == midRoomOnly && TempPlayer.Instance.Playerbody.IsTouching(roomCollider)) //if doesn't work then change to if
+        else if (this.gameObject == midRoomOnly && Player.Instance.Playerbody.IsTouching(roomCollider)) //if doesn't work then change to if
         {
             RoomManager.Instance.inHallway = false;
             RoomManager.Instance.inMiddleRoom = true;
             RoomManager.Instance.inUpperRoom = false;
         }
-        else if (this.gameObject == upperRoomOnly && TempPlayer.Instance.Playerbody.IsTouching(roomCollider))
+        else if (this.gameObject == upperRoomOnly && Player.Instance.Playerbody.IsTouching(roomCollider))
         {
             RoomManager.Instance.inHallway = false;
             RoomManager.Instance.inMiddleRoom = false;

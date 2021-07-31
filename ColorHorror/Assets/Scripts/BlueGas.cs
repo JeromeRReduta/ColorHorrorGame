@@ -7,20 +7,53 @@ public class BlueGas : MonoBehaviour
     [SerializeField] GameObject mainLights;
     Camera cam;
 
-    void OnTriggerEnter2D()
+    GameObject[] blueGassesLight;
+    GameObject monster;
+
+    void Start()
     {
-        mainLights.SetActive(true);
-        cam = this.gameObject.GetComponentInChildren<Camera>();
-       
-        cam.enabled = true;
+        blueGassesLight = GameObject.FindGameObjectsWithTag("BlueGasLight");
+        monster = GameObject.FindGameObjectWithTag("Monster");
+    }
+
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.CompareTag("Player"))
+        {
+            mainLights.SetActive(true);
+            cam = this.gameObject.GetComponentInChildren<Camera>();
+
+            for (int i = 0; i < blueGassesLight.Length; i++)
+            {
+                blueGassesLight[i].SetActive(false);
+                blueGassesLight[i].GetComponentInParent<Animator>().enabled = false;
+                blueGassesLight[i].GetComponentInParent<SpriteRenderer>().enabled = false;
+            }
+        
+            monster.gameObject.transform.GetChild(0).gameObject.SetActive(false);
+        
+            cam.enabled = true;
+        }
 
     }
 
-    void OnTriggerExit2D()
+    void OnTriggerExit2D(Collider2D col)
     {
-        mainLights.SetActive(false);
-        cam = this.gameObject.GetComponentInChildren<Camera>();
-        cam.enabled = false;
-      
+        if (col.gameObject.CompareTag("Player"))
+        {
+            mainLights.SetActive(false);
+            cam = this.gameObject.GetComponentInChildren<Camera>();
+
+            for (int i = 0; i < blueGassesLight.Length; i++)
+            {
+                blueGassesLight[i].SetActive(true);
+                blueGassesLight[i].GetComponentInParent<Animator>().enabled = true;
+                blueGassesLight[i].GetComponentInParent<SpriteRenderer>().enabled = true;
+            }
+
+            monster.gameObject.transform.GetChild(0).gameObject.SetActive(true);
+
+            cam.enabled = false;
+        }
     }
 }
