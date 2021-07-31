@@ -6,7 +6,7 @@ using Pathfinding;
 public class ChangePlayerColor : MonoBehaviour
 {
     public float paintTime = 10f;
-    //public AIPath Path;
+    public AIPath Path;
     public GameObject RedMonster;
     //public GameObject BlueMonster;
     //public GameObject YellowMonster;
@@ -32,8 +32,8 @@ public class ChangePlayerColor : MonoBehaviour
     {
         transform.GetComponent<Renderer>().material.color = new Color(176,0,0);
         Debug.Log("HIT RED POOL");
-        //Path.enabled = false;
 
+        Path.enabled = false;
         RedMonster.GetComponent<RedMonsterNew>().enabled = false;
 
         yield return new WaitForSeconds(paintTime);
@@ -41,7 +41,7 @@ public class ChangePlayerColor : MonoBehaviour
         Debug.Log("I AM NO LONGER RED");
         
         RedMonster.GetComponent<RedMonsterNew>().enabled = true;
-        //Path.enabled = true;
+        Path.enabled = true;
     }
 
     IEnumerator ChangeColorBlue()

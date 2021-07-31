@@ -1002,6 +1002,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paintTime: 10
+  Path: {fileID: 1176094953}
   RedMonster: {fileID: 1176094949}
   redPool: {fileID: 732235901}
 --- !u!1 &708679455
@@ -1047,7 +1048,7 @@ GameObject:
   - component: {fileID: 721021255}
   m_Layer: 0
   m_Name: Good Blue Pool_0
-  m_TagString: Untagged
+  m_TagString: BluePool
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
