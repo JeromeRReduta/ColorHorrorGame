@@ -31,7 +31,7 @@ public class ChangePlayerColor : MonoBehaviour
 
     IEnumerator ChangeColorRed()
     {
-        Player.GetComponent<SpriteRenderer>().material.color = new Color(176,0,0);
+        Player.GetComponent<SpriteRenderer>().color = Color.red;
         Debug.Log("HIT RED POOL");
 
         Path.enabled = false;
