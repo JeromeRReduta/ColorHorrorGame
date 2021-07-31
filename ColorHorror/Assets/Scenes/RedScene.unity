@@ -1001,9 +1001,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 882fefb6867fe174d8c1ca254b9caa6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  paintTime: 10
+  paintTime: 3
   Path: {fileID: 1176094953}
   RedMonster: {fileID: 1176094949}
+  Player: {fileID: 679471579}
   redPool: {fileID: 732235901}
 --- !u!1 &708679455
 GameObject:
