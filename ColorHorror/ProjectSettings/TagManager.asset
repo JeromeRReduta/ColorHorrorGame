@@ -8,6 +8,7 @@ TagManager:
   - enemy
   - Monster
   - RedPool
+  - BluePool
   layers:
   - Default
   - TransparentFX
