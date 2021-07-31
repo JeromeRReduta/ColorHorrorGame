@@ -12,10 +12,23 @@ WHITE MONSTER BEHAVIOR:
 */
 public class WhiteMonster : Monster // TODO: Spawning logic
 {
+
+    public AudioManager audioManager;
+
+    public override void Start()
+    {
+        base.Start();
+        Debug.Log("STARTING SOUND");
+        audioManager.Play("MonsterWalk");
+    }
     /**
     Does nothing, since A* algorithm handles all movement logic 
     */
     public override void Update()
     {
     }
+
+
+
+
 }
