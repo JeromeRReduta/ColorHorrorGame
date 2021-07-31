@@ -17,6 +17,7 @@ public class PlayerCollision : MonoBehaviour
             StartCoroutine(cameraShake.Shake(.2f, .4f));
           
         }
+
     }
 
     void playerHurt()

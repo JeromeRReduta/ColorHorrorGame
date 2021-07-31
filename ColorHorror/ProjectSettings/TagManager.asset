@@ -7,6 +7,8 @@ TagManager:
   - Door
   - enemy
   - Monster
+  - RedPool
+  - BluePool
   layers:
   - Default
   - TransparentFX

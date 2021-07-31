@@ -1,7 +1,34 @@
 fileFormatVersion: 2
 guid: 26aca4e3620cb9144b438701191e285a
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -3532696448414281871
+    second: Good Blue Pool_0
+  - first:
+      213: -4118391834143705859
+    second: Good Blue Pool_1
+  - first:
+      213: -5134213718405143781
+    second: Good Blue Pool_2
+  - first:
+      213: -7263678076581759917
+    second: Good Blue Pool_3
+  - first:
+      213: 758707225376914216
+    second: Good Blue Pool_4
+  - first:
+      213: -7716395208496609279
+    second: Good Blue Pool_5
+  - first:
+      213: 7641984712159146363
+    second: Good Blue Pool_6
+  - first:
+      213: -5432906387157717141
+    second: Good Blue Pool_7
+  - first:
+      213: -3122673454902015637
+    second: Good Blue Pool_8
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -41,7 +68,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -75,9 +102,222 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Good Blue Pool_0
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 675
+        width: 235
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17f8bf41c4759fec0800000000000000
+      internalID: -3532696448414281871
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Good Blue Pool_1
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 675
+        width: 235
+        height: 169
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df4beff627888d6c0800000000000000
+      internalID: -4118391834143705859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Good Blue Pool_2
+      rect:
+        serializedVersion: 2
+        x: 637
+        y: 675
+        width: 235
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b13268943db9fb8b0800000000000000
+      internalID: -5134213718405143781
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Good Blue Pool_3
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 375
+        width: 235
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3543d82264b323b90800000000000000
+      internalID: -7263678076581759917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Good Blue Pool_4
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 375
+        width: 235
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82bfc11a338778a00800000000000000
+      internalID: 758707225376914216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Good Blue Pool_5
+      rect:
+        serializedVersion: 2
+        x: 637
+        y: 375
+        width: 235
+        height: 159
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 108880be07bd9e490800000000000000
+      internalID: -7716395208496609279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Good Blue Pool_6
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 178
+        width: 46
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7136335b98cd0a60800000000000000
+      internalID: 7641984712159146363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Good Blue Pool_7
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 75
+        width: 235
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6f6387fc607a94b0800000000000000
+      internalID: -5432906387157717141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Good Blue Pool_8
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 75
+        width: 235
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b69060399090aa4d0800000000000000
+      internalID: -3122673454902015637
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TPTrigger : MonoBehaviour
 {
-    LevelLoader levelLoader;
+    //LevelLoader levelLoader;
     public GameManager gameManager;
     void OnTriggerEnter2D()
     {
