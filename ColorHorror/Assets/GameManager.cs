@@ -9,4 +9,9 @@ public LevelLoader levelLoader;
    {
        levelLoader.LoadNextLevel();
    } 
+
+   public void ChangeToBlue ()
+   {
+       levelLoader.LoadBlueScene();
+   }
 }

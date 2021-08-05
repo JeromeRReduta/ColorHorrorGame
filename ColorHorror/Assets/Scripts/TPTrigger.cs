@@ -6,8 +6,9 @@ public class TPTrigger : MonoBehaviour
 {
     //LevelLoader levelLoader;
     public GameManager gameManager;
-    void OnTriggerEnter2D()
+    private void OnTriggerEnter2D(Collider2D col)
     {
-        gameManager.CompleteLevel();
+        if(col.gameObject.tag == "BlueTP")
+        gameManager.ChangeToBlue();
     }
 }

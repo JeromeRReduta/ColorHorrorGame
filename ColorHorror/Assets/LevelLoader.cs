@@ -34,4 +34,19 @@ public class LevelLoader : MonoBehaviour
         SceneManager.LoadScene(levelndex);
     }
 
+    public void LoadBlueScene()
+    {
+        StartCoroutine(LoadBlue());
+    }
+
+     IEnumerator LoadBlue()
+    {
+        //Play Animation
+        transition.SetTrigger("Start");
+        //Wait for anitmation 
+        yield return new WaitForSeconds(transitionTime);
+        //Load scene
+        SceneManager.LoadScene("BlueTestScene");
+    }
+
 }
