@@ -21,6 +21,7 @@ public class PlayerCollision : MonoBehaviour
 
         if(collision.gameObject.tag == "MainRoomLoader"){
            gameManager.ChangeToMain();
+           Debug.Log("Hit Main Room Loader");
         }
 
     }
