@@ -10,5 +10,6 @@ public class TPTrigger : MonoBehaviour
     {
         if(col.gameObject.tag == "BlueTP")
         gameManager.ChangeToBlue();
+        Debug.Log("Hit Blue TP");
     }
 }

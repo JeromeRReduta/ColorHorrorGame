@@ -47,6 +47,7 @@ public class LevelLoader : MonoBehaviour
         yield return new WaitForSeconds(transitionTime);
         //Load scene
         SceneManager.LoadScene("BlueTestScene");
+        Debug.Log("TPing to blue");
     }
 
 }
