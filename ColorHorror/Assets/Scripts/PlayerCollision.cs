@@ -22,8 +22,8 @@ public class PlayerCollision : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D col){
         if(col.gameObject.tag == "MainRoomLoader"){
-           gameManager.ChangeToBlue();
-           Debug.Log("Hit Main Room Loader");
+            Debug.Log("Hit Main Room Loader");
+           gameManager.ChangeToMain();
     }
     }
 

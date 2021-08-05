@@ -48,8 +48,8 @@ public class LevelLoader : MonoBehaviour
         //Wait for anitmation 
         yield return new WaitForSeconds(transitionTime);
         //Load scene
-        SceneManager.LoadScene("BlueTestScene");
-        Debug.Log("TPing to blue");
+        SceneManager.LoadScene("MainAreaTest");
+        Debug.Log("TPing to main room");
     }
 
     public void LoadMain(){
