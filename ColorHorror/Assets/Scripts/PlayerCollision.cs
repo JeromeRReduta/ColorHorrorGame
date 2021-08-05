@@ -8,7 +8,7 @@ public class PlayerCollision : MonoBehaviour
 
     public GameObject m_GotHitScreen;
     public CameraShake cameraShake;
-    public TPTrigger tPTrigger;
+    //public TPTrigger tPTrigger;
     public GameManager gameManager;
     private void OnCollisionEnter2D(Collision2D collision)
     {
