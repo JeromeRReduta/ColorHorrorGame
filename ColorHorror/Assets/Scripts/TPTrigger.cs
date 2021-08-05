@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class TPTrigger : MonoBehaviour
 {
-    //LevelLoader levelLoader;
     public GameManager gameManager;
-    private void OnTriggerEnter2D(Collider2D col)
+    private void Method1()
     {
-        if(col.gameObject.tag == "BlueTP")
         gameManager.ChangeToBlue();
+        //gameManager.CompleteLevel();
         Debug.Log("Hit Blue TP");
     }
 }

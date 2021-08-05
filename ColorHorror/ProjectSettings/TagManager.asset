@@ -10,6 +10,7 @@ TagManager:
   - BlueGasLight
   - SeparateRoom
   - BlueTP
+  - MainRoomLoader
   layers:
   - Default
   - TransparentFX

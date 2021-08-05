@@ -50,4 +50,19 @@ public class LevelLoader : MonoBehaviour
         Debug.Log("TPing to blue");
     }
 
+    IEnumerator LoadMainScene()
+    {
+        //Play Animation
+        transition.SetTrigger("Start");
+        //Wait for anitmation 
+        yield return new WaitForSeconds(transitionTime);
+        //Load scene
+        SceneManager.LoadScene("BlueTestScene");
+        Debug.Log("TPing to blue");
+    }
+
+    public void LoadMain(){
+        StartCoroutine(LoadMainScene());
+    }
+
 }

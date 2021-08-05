@@ -14,4 +14,9 @@ public LevelLoader levelLoader;
    {
        levelLoader.LoadBlueScene();
    }
+
+   public void ChangeToMain()
+   {
+       levelLoader.LoadMain();
+   }
 }

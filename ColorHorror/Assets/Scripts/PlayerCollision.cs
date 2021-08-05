@@ -8,7 +8,8 @@ public class PlayerCollision : MonoBehaviour
 
     public GameObject m_GotHitScreen;
     public CameraShake cameraShake;
-
+    public TPTrigger tPTrigger;
+    public GameManager gameManager;
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Monster")
@@ -16,6 +17,10 @@ public class PlayerCollision : MonoBehaviour
             playerHurt();
             StartCoroutine(cameraShake.Shake(.2f, .4f));
           
+        }
+
+        if(collision.gameObject.tag == "MainRoomLoader"){
+           gameManager.ChangeToMain();
         }
 
     }
