@@ -19,11 +19,12 @@ public class PlayerCollision : MonoBehaviour
           
         }
 
-        if(collision.gameObject.tag == "MainRoomLoader"){
-           gameManager.ChangeToMain();
+    }
+    private void OnTriggerEnter2D(Collider2D col){
+        if(col.gameObject.tag == "MainRoomLoader"){
+           gameManager.ChangeToBlue();
            Debug.Log("Hit Main Room Loader");
-        }
-
+    }
     }
 
     void playerHurt()

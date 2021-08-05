@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class TPTrigger : MonoBehaviour
 {
+    //LevelLoader levelLoader;
     public GameManager gameManager;
-    private void Method1()
+    void OnTriggerEnter2D()
     {
-        gameManager.ChangeToBlue();
-        //gameManager.CompleteLevel();
-        Debug.Log("Hit Blue TP");
+        gameManager.CompleteLevel();
     }
 }

@@ -8,17 +8,6 @@ public class LevelLoader : MonoBehaviour
     public Animator transition;
     public float transitionTime = 1f;
 
-    // Update is called once per frame
-
-    /*void Update()
-    {
-        if(Input.GetMouseButtonDown(0))
-        {
-            LoadNextLevel();
-        }
-    }
-    
-    */
     public void LoadNextLevel()
     {
         StartCoroutine (LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
@@ -33,6 +22,8 @@ public class LevelLoader : MonoBehaviour
         //Load scene
         SceneManager.LoadScene(levelndex);
     }
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     public void LoadBlueScene()
     {
@@ -49,7 +40,7 @@ public class LevelLoader : MonoBehaviour
         SceneManager.LoadScene("BlueTestScene");
         Debug.Log("TPing to blue");
     }
-
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     IEnumerator LoadMainScene()
     {
         //Play Animation
