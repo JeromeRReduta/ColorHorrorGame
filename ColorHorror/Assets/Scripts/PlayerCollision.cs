@@ -24,7 +24,11 @@ public class PlayerCollision : MonoBehaviour
         if(col.gameObject.tag == "MainRoomLoader"){
             Debug.Log("Hit Main Room Loader");
            gameManager.ChangeToMain();
-    }
+        }
+        if(col.gameObject.tag == "RedTP"){
+            Debug.Log("Red TP");
+            gameManager.ChangeToMain();
+        }
     }
 
     void playerHurt()

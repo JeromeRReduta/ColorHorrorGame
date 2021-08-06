@@ -12,6 +12,8 @@ TagManager:
   - BlueTP
   - MainRoomLoader
   - RedPool
+  - RedTP
+  - YellowTP
   layers:
   - Default
   - TransparentFX

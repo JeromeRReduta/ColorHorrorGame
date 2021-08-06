@@ -56,4 +56,20 @@ public class LevelLoader : MonoBehaviour
         StartCoroutine(LoadMainScene());
     }
 
+    public void LoadRedScene()
+    {
+        StartCoroutine(LoadRed());
+    }
+
+    IEnumerator LoadRed()
+    {
+        //Play Animation
+        transition.SetTrigger("Start");
+        //Wait for anitmation 
+        yield return new WaitForSeconds(transitionTime);
+        //Load scene
+        SceneManager.LoadScene("RedSceneNew");
+        Debug.Log("TPing to red room");
+    }
+
 }
