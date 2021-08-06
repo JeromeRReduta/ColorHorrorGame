@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+///This is for the player that is in the main room
 public class PlayerLevelLoader : MonoBehaviour
 {
    public GameManagerScriptMain gameManager;

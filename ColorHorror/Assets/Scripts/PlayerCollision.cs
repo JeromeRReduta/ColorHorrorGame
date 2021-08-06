@@ -8,8 +8,6 @@ public class PlayerCollision : MonoBehaviour
 
     public GameObject m_GotHitScreen;
     public CameraShake cameraShake;
-    //public TPTrigger tPTrigger;
-    public GameManagerScript2 gameManager;
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Monster")
@@ -19,16 +17,6 @@ public class PlayerCollision : MonoBehaviour
           
         }
 
-    }
-    private void OnTriggerEnter2D(Collider2D col){
-        if(col.gameObject.tag == "MainRoomLoader"){
-            Debug.Log("Hit Main Room Loader");
-           gameManager.ChangeToMain();
-        }
-        if(col.gameObject.tag == "RedTP"){
-            Debug.Log("Red TP");
-            gameManager.ChangeToMain();
-        }
     }
 
     void playerHurt()
