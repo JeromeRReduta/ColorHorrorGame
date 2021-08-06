@@ -5,12 +5,12 @@ using UnityEngine;
 public class GameManagerScriptMain : MonoBehaviour
 {
     public LevelLoader levelLoader;
-   public void CompleteLevel ()
+   public void CompleteLevel()
    {
        levelLoader.LoadNextLevel();
    } 
 
-   public void ChangeToBlue ()
+   public void ChangeToBlue()
    {
        levelLoader.LoadBlueScene();
    }
