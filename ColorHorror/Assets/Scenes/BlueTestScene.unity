@@ -743,7 +743,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_GotHitScreen: {fileID: 410825431}
   cameraShake: {fileID: 573756715}
-  gameManager: {fileID: 0}
+  gameManager: {fileID: 1152149399}
 --- !u!95 &201083320
 Animator:
   serializedVersion: 3
