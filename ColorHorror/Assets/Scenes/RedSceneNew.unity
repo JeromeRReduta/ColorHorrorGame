@@ -12600,6 +12600,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RedBucketButton
       objectReference: {fileID: 0}
+    - target: {fileID: 2336063532386145995, guid: d3736bd7a470a9e40aa9e50b0344c4e7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2827530563402397762, guid: d3736bd7a470a9e40aa9e50b0344c4e7, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
