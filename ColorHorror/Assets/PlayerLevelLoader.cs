@@ -8,12 +8,18 @@ public class PlayerLevelLoader : MonoBehaviour
 
    private void OnTriggerEnter2D(Collider2D col){
         if(col.gameObject.tag == "MainRoomLoader"){
-            Debug.Log("Hit Main Room Loader");
+            Debug.Log("I Hit Main Room Loader");
            gameManager.ChangeToMain();
         }
         if(col.gameObject.tag == "RedTP"){
-            Debug.Log("Red TP");
+            Debug.Log("I hit Red TP");
             gameManager.ChangeToMain();
         }
+
+        if(col.gameObject.tag == "BlueTP"){
+            Debug.Log("I Hit Blue TP");
+           gameManager.ChangeToBlue();
+
     }
+}
 }
