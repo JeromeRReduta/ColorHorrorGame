@@ -1164,6 +1164,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1743863815}
+    - target: {fileID: 398706404431065458, guid: 208350b0e9a36514bac64987d686da4b, type: 3}
+      propertyPath: audioManager
+      value: 
+      objectReference: {fileID: 2126500089556775901}
     - target: {fileID: 398706404431065459, guid: 208350b0e9a36514bac64987d686da4b, type: 3}
       propertyPath: m_RootOrder
       value: 1
