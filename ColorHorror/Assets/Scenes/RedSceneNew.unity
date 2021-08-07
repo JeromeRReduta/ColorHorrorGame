@@ -1158,7 +1158,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 398706404431065458, guid: 208350b0e9a36514bac64987d686da4b, type: 3}
       propertyPath: color
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 398706404431065458, guid: 208350b0e9a36514bac64987d686da4b, type: 3}
       propertyPath: player

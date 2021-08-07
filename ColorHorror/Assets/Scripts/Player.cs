@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public delegate void ChangeColorAction(Color color);
+    public static event ChangeColorAction OnColorChange;
+    
+
+
     int health = 2;
     bool recentlyHit = false;
     public static Player Instance;
     public float CharacterSpeed = 14f;
-    [HideInInspector] public Vector2 InputDir;
     public Rigidbody2D Playerbody;
     [HideInInspector] public Vector2 movement;
     Animator animator;
@@ -26,17 +30,27 @@ public class Player : MonoBehaviour
         Instance = this;
         animator = GetComponent<Animator>();
     }
+
+    void OnEnable()
+    {
+        Pool.OnEnteringPool += ChangeColorTo;
+    }
+
+    void OnDisable()
+    {
+        Pool.OnEnteringPool -= ChangeColorTo;
+    }
     
     void Update()
     {
         if (paintCountDown > 0 && currentColor != defaultColor)
         {
-            Debug.Log("Returning to default color (" + defaultColor.ToString() + ") in " + paintCountDown + " frames");
+            //Debug.Log("Returning to default color (" + defaultColor.ToString() + ") in " + paintCountDown + " frames");
             paintCountDown--;
         }
-        else
+        else if (paintCountDown == 0)
         {
-            Debug.Log("Returning to default color(" + defaultColor.ToString() + ")");
+            //Debug.Log("Returning to default color(" + defaultColor.ToString() + ")");
             ChangeColorTo(defaultColor);
         }
 
@@ -131,10 +145,15 @@ public class Player : MonoBehaviour
 
     public void ChangeColorTo(Color color)
     {
-        Debug.Log("Changing color to: " + color);
+        Debug.Log("CHANGING COLOR TO: " + color);
         currentColor = color;
         GetComponent<Renderer>().material.color = color;
         paintCountDown = paintFrames;
+
+        if (OnColorChange != null)
+        {
+            OnColorChange(currentColor);
+        }
         
         
     }

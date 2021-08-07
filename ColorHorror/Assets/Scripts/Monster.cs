@@ -34,7 +34,7 @@ public abstract class Monster : MonoBehaviour
     public virtual void Start()
     {
         Col = GetComponent<Collider2D>();
-        Rb = gameObject.GetComponent<Rigidbody2D>();
+        Rb = GetComponent<Rigidbody2D>();
 
         PlayWalkSound();
     }
@@ -67,4 +67,37 @@ public abstract class Monster : MonoBehaviour
     public abstract void StopWalkSound();
 
     public abstract void PlayHitSound();
+
+    public void TryDisableAggro(Color playerColor)
+    {
+        Debug.Log("MONSTER COLOR == PLAYER COLOR? " + (color == playerColor));
+        Debug.Log(color == playerColor ? "DISABLING" : "ENABLING" + "AGGRO");
+        if (color == playerColor)
+        {
+            DisableAggro();
+        }
+        else
+        {
+            EnableAggro();
+        }
+    }
+
+    public virtual void DisableAggro()
+    {
+        GetComponent<TempEnemyScript>().aiPath.enabled = false;
+    }
+    public virtual void EnableAggro()
+    {
+        GetComponent<TempEnemyScript>().aiPath.enabled = true;
+    }
+
+    void OnEnable()
+    {
+        Player.OnColorChange += TryDisableAggro;
+    }
+
+    void OnDisable()
+    {
+        Player.OnColorChange -= TryDisableAggro;
+    }
 }

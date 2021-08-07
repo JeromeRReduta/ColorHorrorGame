@@ -5,15 +5,13 @@ using UnityEngine;
 public class YellowMonsterNew : Monster
 {
 
-    /** Cooldown of teleport, in seconds */
-    public static int tpCooldown = 5;
+
 
     /** Counter used to keep track of current teleport cooldown, in frames */
-    private static int countdown = YellowMonster.tpCooldown * 60;
+    [SerializeField] private static int tpCooldown = 120;
 
-    private int currentCountDown = countdown;
+    private int currentCountDown = tpCooldown;
 
-    [SerializeField] private Player player;
 
     /**
     Attempts to teleport in front of player every x seconds, otherwise chases towards player
@@ -24,6 +22,7 @@ public class YellowMonsterNew : Monster
 
     public override void Start()
     {
+        base.Start();
         base.color = Color.yellow;
     }
 
@@ -31,18 +30,27 @@ public class YellowMonsterNew : Monster
     {
 
     }
+
+    public override void DisableAggro()
+    {
+        base.DisableAggro();
+        currentCountDown = -1;
+    }
+
+    public override void EnableAggro()
+    {
+        base.EnableAggro();
+        currentCountDown = tpCooldown;
+    }
     
     public void FixedUpdate() {
 
-        if (base.color == player.currentColor) // TODO: Very inefficient implementation. Refactor using events
+        if (currentCountDown > 0)
         {
-            GetComponent<TempEnemyScript>().aiPath.enabled = false;
-            return;
+            currentCountDown--;
         }
-        
-        GetComponent<TempEnemyScript>().aiPath.enabled = true;
-    
-        if (--currentCountDown <= 0) {
+        else if (currentCountDown == 0)
+        {
             Vector3 lineDir = Vector3.zero;
 
             if (Player.Instance.movement.x > 0)
@@ -79,8 +87,7 @@ public class YellowMonsterNew : Monster
                 if (!hit)
                 {
                     this.transform.position = FuturePoint;
-                    currentCountDown = countdown;
-
+                    currentCountDown = tpCooldown;
                 }
                 else
                 {
@@ -92,30 +99,16 @@ public class YellowMonsterNew : Monster
                     if (!hitBack)
                     {
                         this.transform.position = FuturePoint;
-                        currentCountDown = countdown;
+                        
                     }
+
+
+                    currentCountDown = tpCooldown;
                 }
 
                 PlayTeleportSound();
-                // else
-                // {
-                //     float distance = hit.distance > 0 ? hit.distance : CharacterSpeed;
-                //     FuturePoint = hit.distance > 0 ? (Vector3) hit.point : this.transform.position + CharacterSpeed * lineDir;
-                //     Debug.Log("Distance: " + hit.distance);
-                //     Debug.DrawLine(this.transform.position, FuturePoint, Color.red, 2, false);
-                //     Debug.Log("Starting position: " + this.transform.position);
-                //     Debug.Log("Final position: " + FuturePoint);
-
-                //     Debug.Log("TELEPORT: In 1 second, player will be @: " + FuturePoint);
-                //     this.transform.position = FuturePoint;
-
-                // }
-
-                // if raycast hits wall, then does not teleport and countdown is reset
-                
             }
         }
-
     }
 
     public override void PlayWalkSound()

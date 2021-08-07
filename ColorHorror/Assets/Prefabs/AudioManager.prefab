@@ -217,3 +217,9 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  - name: EnterPool
+    clip: {fileID: 8300000, guid: 7b4a18ec5ab21bc4abca3f1aaee6ffb7, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}

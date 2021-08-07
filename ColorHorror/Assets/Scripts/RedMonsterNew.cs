@@ -76,6 +76,13 @@ public class RedMonsterNew : Monster
         Debug.DrawLine(chargeRight.transform.position, dest, Color.blue);
     }
 
+    public override void DisableAggro()
+    {
+        base.DisableAggro();
+        StopCoroutine( Charge() );
+    }
+
+
     /**
     Charge at player every 4 seconds
     */
