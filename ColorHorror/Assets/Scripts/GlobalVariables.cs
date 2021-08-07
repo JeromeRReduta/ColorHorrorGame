@@ -4,15 +4,29 @@ using UnityEngine;
 
 public class GlobalVariables : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public static GlobalVariables Instance;
+    public bool gotRedBucket, gotBlueBucket, gotYellowBucket;
+    [HideInInspector] public bool gotAllBuckets;
+    void Awake()
     {
-        
+        DontDestroyOnLoad(transform.gameObject);
     }
 
-    // Update is called once per frame
+    void Start()
+    {
+        Instance = this;
+    }
+
     void Update()
     {
-        
+        if (gotRedBucket == true && gotBlueBucket == true && gotYellowBucket == true)
+        {
+            gotAllBuckets = true;
+        }
+        else
+        {
+            gotAllBuckets = false;
+        }
     }
+
 }
