@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class YellowMonsterNew : MonoBehaviour
+public class YellowMonsterNew : Monster
 {
 
     /** Cooldown of teleport, in seconds */
@@ -13,13 +13,34 @@ public class YellowMonsterNew : MonoBehaviour
 
     private int currentCountDown = countdown;
 
+    [SerializeField] private Player player;
+
     /**
     Attempts to teleport in front of player every x seconds, otherwise chases towards player
     */
 
     public Vector3 FuturePoint {get; private set;}
     float CharacterSpeed;
+
+    public override void Start()
+    {
+        base.color = Color.yellow;
+    }
+
+    public override void Update()
+    {
+
+    }
+    
     public void FixedUpdate() {
+
+        if (base.color == player.currentColor) // TODO: Very inefficient implementation. Refactor using events
+        {
+            GetComponent<TempEnemyScript>().aiPath.enabled = false;
+            return;
+        }
+        
+        GetComponent<TempEnemyScript>().aiPath.enabled = true;
     
         if (--currentCountDown <= 0) {
             Vector3 lineDir = Vector3.zero;
@@ -50,7 +71,7 @@ public class YellowMonsterNew : MonoBehaviour
                 CharacterSpeed = Player.Instance.CharacterSpeed;
 
                 RaycastHit2D hit = Physics2D.Raycast(playerPos, lineDir, CharacterSpeed, 
-                LayerMask.GetMask("Walls" , "Monster"));
+                    LayerMask.GetMask("Walls" , "Monster"));
 
                 FuturePoint = new Vector3 (playerPos.x + (lineDir.x * CharacterSpeed), playerPos.y + (lineDir.y * CharacterSpeed), playerPos.z); 
                 Debug.DrawLine(playerPos, FuturePoint, Color.red, 2, false);
@@ -74,6 +95,8 @@ public class YellowMonsterNew : MonoBehaviour
                         currentCountDown = countdown;
                     }
                 }
+
+                PlayTeleportSound();
                 // else
                 // {
                 //     float distance = hit.distance > 0 ? hit.distance : CharacterSpeed;
@@ -93,5 +116,25 @@ public class YellowMonsterNew : MonoBehaviour
             }
         }
 
+    }
+
+    public override void PlayWalkSound()
+    {
+        base.Audio.Play("YellowMonWalk");
+    }
+
+    public override void StopWalkSound()
+    {
+        base.Audio.Stop("YellowMonWalk");
+    }
+
+    public override void PlayHitSound()
+    {
+        base.Audio.Play("YellowMonHit");
+    }
+
+    public void PlayTeleportSound()
+    {
+        base.Audio.Play("YellowMonTP");
     }
 }

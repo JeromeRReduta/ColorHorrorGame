@@ -9,6 +9,8 @@ TagManager:
   - Monster
   - BlueGasLight
   - SeparateRoom
+  - RedPool
+  - Pool
   layers:
   - Default
   - TransparentFX

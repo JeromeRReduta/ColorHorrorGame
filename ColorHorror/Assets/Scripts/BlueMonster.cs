@@ -10,29 +10,44 @@ WHITE MONSTER BEHAVIOR:
 2) Chase player indefinitely
 3) If it hits player, hurts player for 1 damage and continues chasing
 */
-public class WhiteMonster : Monster // TODO: Spawning logic
+public class BlueMonster : Monster // TODO: Spawning logic
 {
+
+    public Player player;
+
+    public override void Start()
+    {
+        base.Start();
+        base.color = Color.blue;
+    }
     /**
     Does nothing, since A* algorithm handles all movement logic 
     */
     public override void Update()
     {
+
+        if (base.color == player.currentColor)
+        {
+            GetComponent<TempEnemyScript>().aiPath.enabled = false;
+        }
+
+        GetComponent<TempEnemyScript>().aiPath.enabled = true;
     }
 
     public override void PlayWalkSound()
     {
         Debug.Log("AUDIO: " + base.Audio != null ? "null" : base.Audio.ToString());
-        base.Audio.Play("WhiteMonWalk");
+        base.Audio.Play("BlueMonWalk");
     }
 
     public override void StopWalkSound()
     {
-        base.Audio.Stop("WhiteMonWalk");
+        base.Audio.Stop("BlueMonWalk");
     }
 
     public override void PlayHitSound()
     {
-        base.Audio.Play("WhiteMonHit");
+        base.Audio.Play("BlueMonHit");
     }
 
 
