@@ -28,11 +28,29 @@ public class RedMonsterNew : Monster
     [HideInInspector] public Vector3 recoil;
     private int slowDown = 0;
 
+    [SerializeField] private Player player;
+
+    public override void Start()
+    {
+        base.Start();
+        base.color = Color.red;
+    }
+
     /**
     Attempts to charge at player every 4 seconds
     */
     public override void Update()
     {
+
+        if (base.color == player.currentColor)
+        {
+            StopCoroutine(Charge());
+            GetComponent<TempEnemyScript>().aiPath.enabled = false;
+        }
+
+        GetComponent<TempEnemyScript>().aiPath.enabled = true;
+
+
         Vector3 dest = Path.destination;
         RaycastHit2D hit = Physics2D.Linecast(base.Rb.transform.position, dest, LayerMask.GetMask("Walls", "Player"));
         RaycastHit2D hitUp = Physics2D.Linecast(chargeUp.transform.position, dest, LayerMask.GetMask("Walls", "Player"));
@@ -40,7 +58,7 @@ public class RedMonsterNew : Monster
         RaycastHit2D hitRight = Physics2D.Linecast(chargeRight.transform.position, dest, LayerMask.GetMask("Walls", "Player"));
         RaycastHit2D hitLeft = Physics2D.Linecast(chargeLeft.transform.position, dest, LayerMask.GetMask("Walls", "Player"));
 
-        if (hit.collider != null && hitUp.collider.gameObject.CompareTag("Player") && hitDown.collider.gameObject.CompareTag("Player") &&
+        if (hit.collider != null && hitUp.collider.gameObject.CompareTag("Player") && hitDown.collider.gameObject.CompareTag("Player") && // error - bug here
             hitRight.collider.gameObject.CompareTag("Player") && hitLeft.collider.gameObject.CompareTag("Player") && completed)
         {
             completed = false;
@@ -58,11 +76,20 @@ public class RedMonsterNew : Monster
         Debug.DrawLine(chargeRight.transform.position, dest, Color.blue);
     }
 
+    public override void DisableAggro()
+    {
+        base.DisableAggro();
+        StopCoroutine( Charge() );
+    }
+
+
     /**
     Charge at player every 4 seconds
     */
     IEnumerator Charge() // TODO: Make red monster walk towards player when not charging (low-priority)
     {
+        StopWalkSound();
+        PlayChargeSound();
         Vector3 charge = (Path.destination - gameObject.transform.position).normalized * chargeSpeed;
         slowDown = 0;
         recoil = charge.normalized;
@@ -71,9 +98,9 @@ public class RedMonsterNew : Monster
 
         base.Rb.velocity = new Vector2 (0f, 0f);
         base.Rb.AddForce(charge, ForceMode2D.Impulse);
-        
         yield return new WaitForSeconds(4);
-        
+        PlayWalkSound(); // TODO: Put this before or after wait?
+        StopChargeSound();
         completed = true;
         Path.enabled = true;
         // StartCoroutine(FollowPlayerInBetweenCharges());
@@ -90,13 +117,40 @@ public class RedMonsterNew : Monster
 
     // Was thinking of making it so that each monster has a different response to colliding
     // Like Red Monster has recoil momentum for example
-    void OnCollisionEnter2D(Collision2D collision)
+    public override void OnCollisionEnter2D(Collision2D collision)
     {
+        base.OnCollisionEnter2D(collision);
+        base.Audio.Play("RedMonHit"); // plays hit sound no matter what it collides with
         Vector3 reflectVector = collision.contacts[0].normal;
         slowDown++;
         base.Rb.velocity = new Vector2 (0f, 0f);
         base.Rb.velocity = Vector3.Reflect(recoil, reflectVector) * 20;
         recoil = base.Rb.velocity.normalized;
 
+    }
+
+    public void PlayChargeSound()
+    {
+        base.Audio.Play("RedMonCharge");
+    }
+
+    public void StopChargeSound()
+    {
+        base.Audio.Stop("RedMonCharge");
+    }
+
+    public override void PlayWalkSound()
+    {
+        base.Audio.Play("RedMonWalk");
+    }
+
+    public override void StopWalkSound()
+    {
+        base.Audio.Stop("RedMonWalk");
+    }
+
+    public override void PlayHitSound()
+    {
+        base.Audio.Play("RedMonHit");
     }
 }
