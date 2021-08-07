@@ -39,7 +39,7 @@ public class ChangePlayerColor : MonoBehaviour
         RedMonster.GetComponent<RedMonsterNew>().Rb.velocity = Vector2.zero;
         
         yield return new WaitForSeconds(paintTime);
-        transform.GetComponent<Renderer>().material.color = new Color(255,255,255);
+        Player.GetComponent<SpriteRenderer>().color = Color.white;
         Debug.Log("I AM NO LONGER RED");
         
         RedMonster.GetComponent<RedMonsterNew>().enabled = true;

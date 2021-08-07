@@ -2,15 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GameManagerScriptMain : MonoBehaviour
 {
-public LevelLoader levelLoader;
-   public void CompleteLevel ()
+    public LevelLoader levelLoader;
+   public void CompleteLevel()
    {
        levelLoader.LoadNextLevel();
    } 
 
-   public void ChangeToBlue ()
+   public void ChangeToBlue()
    {
        levelLoader.LoadBlueScene();
    }
@@ -18,5 +18,5 @@ public LevelLoader levelLoader;
    public void ChangeToMain()
    {
        levelLoader.LoadMain();
-   }
+   } 
 }

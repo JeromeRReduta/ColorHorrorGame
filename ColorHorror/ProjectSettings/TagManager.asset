@@ -9,6 +9,11 @@ TagManager:
   - Monster
   - BlueGasLight
   - SeparateRoom
+  - BlueTP
+  - MainRoomLoader
+  - RedPool
+  - RedTP
+  - YellowTP
   layers:
   - Default
   - TransparentFX
