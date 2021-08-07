@@ -45,17 +45,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
+  - name: Music
+    clip: {fileID: 8300000, guid: 85d298749f046c645b703010d821f9fd, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
   - name: PlayerWalk
     clip: {fileID: 8300000, guid: b6199bf9b65164d44a5e5e3d4f304e22, type: 3}
     volume: 0.2
     pitch: 0.5
     loop: 1
     source: {fileID: 0}
-  - name: Music
-    clip: {fileID: 8300000, guid: 85d298749f046c645b703010d821f9fd, type: 3}
+  - name: PlayerHit
+    clip: {fileID: 8300000, guid: 670c0ee0e6e772940a740163c404185d, type: 3}
     volume: 1
     pitch: 1
-    loop: 1
+    loop: 0
     source: {fileID: 0}
   - name: WhiteMonWalk
     clip: {fileID: 8300000, guid: a9bf85b5d5281114b8246addddb22632, type: 3}
@@ -75,19 +81,7 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
-  - name: PlayerHit
-    clip: {fileID: 8300000, guid: 670c0ee0e6e772940a740163c404185d, type: 3}
-    volume: 1
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
   - name: RedMonWalk
-    clip: {fileID: 8300000, guid: da17693cd0c1de14ab4632f7a0938013, type: 3}
-    volume: 1
-    pitch: 1
-    loop: 1
-    source: {fileID: 0}
-  - name: RedMonCharge
     clip: {fileID: 8300000, guid: da17693cd0c1de14ab4632f7a0938013, type: 3}
     volume: 1
     pitch: 1
@@ -98,6 +92,12 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     loop: 0
+    source: {fileID: 0}
+  - name: RedMonCharge
+    clip: {fileID: 8300000, guid: da17693cd0c1de14ab4632f7a0938013, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
     source: {fileID: 0}
   - name: YellowMonWalk
     clip: {fileID: 8300000, guid: 91579a2756c3e2f46a2d44e8012c4757, type: 3}
@@ -131,6 +131,12 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: BreatheGas
     clip: {fileID: 8300000, guid: ef98852ce7a612b40b0a7ea874c52a6c, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: EnterPool
+    clip: {fileID: 8300000, guid: 7b4a18ec5ab21bc4abca3f1aaee6ffb7, type: 3}
     volume: 1
     pitch: 1
     loop: 0

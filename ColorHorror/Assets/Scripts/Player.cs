@@ -7,6 +7,11 @@ public class Player : MonoBehaviour
     public delegate void ChangeColorAction(Color color);
     public static event ChangeColorAction OnColorChange;
     
+    public delegate void PlaySoundAction(string name);
+    public static event PlaySoundAction OnPlay;
+
+    public delegate void StopSoundAction(string name);
+    public static event StopSoundAction OnStop;
 
 
     int health = 2;
@@ -16,7 +21,6 @@ public class Player : MonoBehaviour
     public Rigidbody2D Playerbody;
     [HideInInspector] public Vector2 movement;
     Animator animator;
-    public AudioManager audioManager;
     private bool wasWalking = false;
 
     public Color defaultColor = Color.white;
@@ -107,17 +111,26 @@ public class Player : MonoBehaviour
 
     void PlayWalkSound()
     {
-        audioManager.Play("PlayerWalk");
+        if (OnPlay != null)
+        {
+            OnPlay("PlayerWalk");
+        }
     }
 
     void StopWalkSound()
     {
-        audioManager.Stop("PlayerWalk");
+        if (OnPlay != null)
+        {
+            OnStop("PlayerWalk");
+        }
     }
 
     void PlayHitSound()
     {
-        audioManager.Play("PlayerHit");
+        if (OnPlay != null)
+        {
+            OnPlay("PlayerWalk");
+        }
     }
 
     IEnumerator TakeDamage()

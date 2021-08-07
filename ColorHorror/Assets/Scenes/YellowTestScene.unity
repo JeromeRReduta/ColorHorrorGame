@@ -211,7 +211,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Audio: {fileID: 1174564574}
   color: {r: 0, g: 0, b: 0, a: 0}
-  player: {fileID: 5635134231200976688}
 --- !u!1 &940129330
 GameObject:
   m_ObjectHideFlags: 0
@@ -508,6 +507,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 5635134231200976688}
+    - target: {fileID: 398706404431065458, guid: 208350b0e9a36514bac64987d686da4b, type: 3}
+      propertyPath: audioManager
+      value: 
+      objectReference: {fileID: 1174564574}
     - target: {fileID: 398706404431065459, guid: 208350b0e9a36514bac64987d686da4b, type: 3}
       propertyPath: m_RootOrder
       value: 1

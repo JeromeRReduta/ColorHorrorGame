@@ -39,6 +39,18 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    void OnEnable()
+    {
+        Player.OnPlay += Play;
+        Player.OnStop += Stop;
+    }
+
+    void onDisable()
+    {
+        Player.OnPlay -= Play;
+        Player.OnStop -= Stop;
+    }
+
     void Start()
     {
         Play("Music");
