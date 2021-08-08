@@ -14,6 +14,7 @@ public class RoomScript : MonoBehaviour
 
     void Update()
     {
+
         if (this.gameObject == hallwayOnly && Player.Instance.Playerbody.IsTouching(roomCollider))
         {
             RoomManager.Instance.inHallway = true;

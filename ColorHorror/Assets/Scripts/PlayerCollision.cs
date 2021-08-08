@@ -8,7 +8,6 @@ public class PlayerCollision : MonoBehaviour
 
     public GameObject m_GotHitScreen;
     public CameraShake cameraShake;
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Monster")
