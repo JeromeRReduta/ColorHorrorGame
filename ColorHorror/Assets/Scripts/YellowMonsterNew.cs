@@ -2,16 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class YellowMonsterNew : Monster
+public class YellowMonsterNew : MonoBehaviour
 {
 
-
+    /** Cooldown of teleport, in seconds */
+    public static int tpCooldown = 5;
 
     /** Counter used to keep track of current teleport cooldown, in frames */
-    [SerializeField] private static int tpCooldown = 120;
+    private static int countdown = YellowMonster.tpCooldown * 60;
 
-    private int currentCountDown = tpCooldown;
-
+    private int currentCountDown = countdown;
 
     /**
     Attempts to teleport in front of player every x seconds, otherwise chases towards player
@@ -19,38 +19,9 @@ public class YellowMonsterNew : Monster
 
     public Vector3 FuturePoint {get; private set;}
     float CharacterSpeed;
-
-    public override void Start()
-    {
-        base.Start();
-        base.color = Color.yellow;
-    }
-
-    public override void Update()
-    {
-
-    }
-
-    public override void DisableAggro()
-    {
-        base.DisableAggro();
-        currentCountDown = -1;
-    }
-
-    public override void EnableAggro()
-    {
-        base.EnableAggro();
-        currentCountDown = tpCooldown;
-    }
-    
     public void FixedUpdate() {
-
-        if (currentCountDown > 0)
-        {
-            currentCountDown--;
-        }
-        else if (currentCountDown == 0)
-        {
+    
+        if (--currentCountDown <= 0) {
             Vector3 lineDir = Vector3.zero;
 
             if (Player.Instance.movement.x > 0)
@@ -79,7 +50,7 @@ public class YellowMonsterNew : Monster
                 CharacterSpeed = Player.Instance.CharacterSpeed;
 
                 RaycastHit2D hit = Physics2D.Raycast(playerPos, lineDir, CharacterSpeed, 
-                    LayerMask.GetMask("Walls" , "Monster"));
+                LayerMask.GetMask("Walls" , "Monster"));
 
                 FuturePoint = new Vector3 (playerPos.x + (lineDir.x * CharacterSpeed), playerPos.y + (lineDir.y * CharacterSpeed), playerPos.z); 
                 Debug.DrawLine(playerPos, FuturePoint, Color.red, 2, false);
@@ -87,7 +58,8 @@ public class YellowMonsterNew : Monster
                 if (!hit)
                 {
                     this.transform.position = FuturePoint;
-                    currentCountDown = tpCooldown;
+                    currentCountDown = countdown;
+
                 }
                 else
                 {
@@ -99,35 +71,27 @@ public class YellowMonsterNew : Monster
                     if (!hitBack)
                     {
                         this.transform.position = FuturePoint;
-                        
+                        currentCountDown = countdown;
                     }
-
-
-                    currentCountDown = tpCooldown;
                 }
+                // else
+                // {
+                //     float distance = hit.distance > 0 ? hit.distance : CharacterSpeed;
+                //     FuturePoint = hit.distance > 0 ? (Vector3) hit.point : this.transform.position + CharacterSpeed * lineDir;
+                //     Debug.Log("Distance: " + hit.distance);
+                //     Debug.DrawLine(this.transform.position, FuturePoint, Color.red, 2, false);
+                //     Debug.Log("Starting position: " + this.transform.position);
+                //     Debug.Log("Final position: " + FuturePoint);
 
-                PlayTeleportSound();
+                //     Debug.Log("TELEPORT: In 1 second, player will be @: " + FuturePoint);
+                //     this.transform.position = FuturePoint;
+
+                // }
+
+                // if raycast hits wall, then does not teleport and countdown is reset
+                
             }
         }
-    }
 
-    public override void PlayWalkSound()
-    {
-        base.Audio.Play("YellowMonWalk");
-    }
-
-    public override void StopWalkSound()
-    {
-        base.Audio.Stop("YellowMonWalk");
-    }
-
-    public override void PlayHitSound()
-    {
-        base.Audio.Play("YellowMonHit");
-    }
-
-    public void PlayTeleportSound()
-    {
-        base.Audio.Play("YellowMonTP");
     }
 }

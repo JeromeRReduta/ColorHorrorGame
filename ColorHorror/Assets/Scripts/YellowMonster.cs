@@ -30,21 +30,4 @@ public class YellowMonster : Monster
         }
 
     }
-
-
-    public override void PlayWalkSound()
-    {
-        base.Audio.Play("YellowMonWalk");
-    }
-
-    public override void StopWalkSound()
-    {
-        base.Audio.Stop("YellowMonWalk");
-    }
-
-    public override void PlayHitSound()
-    {
-        base.Audio.Play("YellowMonHit");
-    }
-
 }

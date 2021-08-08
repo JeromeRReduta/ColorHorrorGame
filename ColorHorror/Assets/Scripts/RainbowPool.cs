@@ -34,6 +34,7 @@ public class RainbowPool : MonoBehaviour
             emptyPool.gameObject.SetActive(false);
             fullPool.gameObject.SetActive(true);
             lights.gameObject.SetActive(true);
+            GlobalVariables.Instance.isRainbow = true;
         }
     }
 }

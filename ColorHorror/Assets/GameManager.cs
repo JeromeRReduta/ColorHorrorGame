@@ -9,14 +9,4 @@ public LevelLoader levelLoader;
    {
        levelLoader.LoadNextLevel();
    } 
-
-   public void ChangeToBlue ()
-   {
-       levelLoader.LoadBlueScene();
-   }
-
-   public void ChangeToMain()
-   {
-       levelLoader.LoadMain();
-   }
 }

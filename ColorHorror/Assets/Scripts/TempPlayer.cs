@@ -8,7 +8,6 @@ public class TempPlayer : MonoBehaviour
     public static TempPlayer Instance;
     [SerializeField] private float CharacterSpeed = 1.0f;
     public AudioManager audioManager;
-    public string Color {get; private set;}
 
     [HideInInspector] public Vector2 InputDir;
 
@@ -19,8 +18,6 @@ public class TempPlayer : MonoBehaviour
     public Rigidbody2D Playerbody;
     public Vector3 FuturePoint {get; private set;}
 
-    private int debugCount = 200; // TODO: Delete after testing
-
     /** Tracks if the player was walking one frame before now */
     private bool wasWalking = false;
 
@@ -29,24 +26,11 @@ public class TempPlayer : MonoBehaviour
     {
         Instance = this;
         animator = GetComponent<Animator>();
-        Color = "Rainbow";
-
+        
     }
     
     void Update()
     {
-
-        debugCount--;
-        if (debugCount == 0 && Color == "White") {
-            debugCount = 200;
-            Color = "Rainbow";
-            Debug.Log("Changing color to: " + Color);
-        }
-        else if (debugCount == 0) {
-            debugCount = 200;
-            Color = "White";
-            Debug.Log("Changing color to: " + Color);
-        }
 
         Vector3 lineDir = Vector3.zero;
 
@@ -54,6 +38,7 @@ public class TempPlayer : MonoBehaviour
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
 
+        Debug.Log("Was walking 1 frame earlier? " + wasWalking);
         if (movement.x != 0 || movement.y != 0)
         {
             animator.SetBool("Running", true);
@@ -100,6 +85,10 @@ public class TempPlayer : MonoBehaviour
         if (hit != null) {
             float distance = hit.distance > 0 ? hit.distance : CharacterSpeed;
             FuturePoint = hit.distance > 0 ? (Vector3) hit.point : this.transform.position + CharacterSpeed * lineDir;
+            //Debug.Log("Distance: " + hit.distance);
+            //Debug.DrawLine(this.transform.position, FuturePoint, Color.red, 2, false);
+            //Debug.Log("Starting position: " + this.transform.position);
+            //Debug.Log("Final position: " + FuturePoint);
         }
     }
 

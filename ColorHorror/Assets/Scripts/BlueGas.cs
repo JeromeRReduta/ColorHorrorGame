@@ -5,7 +5,6 @@ using UnityEngine;
 public class BlueGas : MonoBehaviour
 {
     [SerializeField] GameObject mainLights;
-    [SerializeField] private AudioManager audioManager;
     Camera cam;
 
     GameObject[] blueGassesLight;
@@ -23,8 +22,6 @@ public class BlueGas : MonoBehaviour
         {
             mainLights.SetActive(true);
             cam = this.gameObject.GetComponentInChildren<Camera>();
-
-            audioManager.Play("BreatheGas");
 
             for (int i = 0; i < blueGassesLight.Length; i++)
             {
@@ -46,8 +43,6 @@ public class BlueGas : MonoBehaviour
         {
             mainLights.SetActive(false);
             cam = this.gameObject.GetComponentInChildren<Camera>();
-
-            audioManager.Stop("BreatheGas");
 
             for (int i = 0; i < blueGassesLight.Length; i++)
             {

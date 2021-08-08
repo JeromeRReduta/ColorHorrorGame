@@ -54,19 +54,4 @@ public class RedMonster : Monster
         completed = true;
         
     }
-
-    public override void PlayWalkSound()
-    {
-        base.Audio.Play("RedMonWalk");
-    }
-
-        public override void StopWalkSound()
-    {
-        base.Audio.Stop("RedMonWalk");
-    }
-
-    public override void PlayHitSound()
-    {
-        base.Audio.Play("RedMonHit");
-    }
 }
