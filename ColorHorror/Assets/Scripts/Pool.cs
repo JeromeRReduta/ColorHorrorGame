@@ -34,11 +34,14 @@ public class Pool : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
+        Debug.Log("ENTERING POOL BUT MAYBE NOT PLAYER");
         Debug.Log("NOT POOL TAG: " + col.gameObject.tag);
         if ( string.Equals(col.gameObject.tag, "Player") && OnEnteringPool != null )
         {
             Debug.Log("ENTERING POOL");
             audioManager.Play("EnterPool");
+
+            Debug.Log("POOL CHANGING PLAYER COLOR TO: " + realColor);
             OnEnteringPool(realColor);
         }
     }

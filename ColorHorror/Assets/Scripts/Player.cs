@@ -2,17 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : Mob
 {
     public delegate void ChangeColorAction(Color color);
     public static event ChangeColorAction OnColorChange;
-    
-    public delegate void PlaySoundAction(string name);
-    public static event PlaySoundAction OnPlay;
-
-    public delegate void StopSoundAction(string name);
-    public static event StopSoundAction OnStop;
-
 
     int health = 2;
     bool recentlyHit = false;
@@ -20,39 +13,40 @@ public class Player : MonoBehaviour
     public float CharacterSpeed = 14f;
     public Rigidbody2D Playerbody;
     [HideInInspector] public Vector2 movement;
-    Animator animator;
     private bool wasWalking = false;
 
     public Color defaultColor = Color.white;
-    public Color currentColor = Color.white;
 
     public int paintFrames = 1800;
     private int paintCountDown = 0;
 
     void Start()
     {
+        base.Start();
+        base.CurrentColor = defaultColor;
         Instance = this;
-        animator = GetComponent<Animator>();
     }
 
-    void OnEnable()
+    public override void OnEnable()
     {
         Pool.OnEnteringPool += ChangeColorTo;
     }
 
-    void OnDisable()
+    public override void OnDisable()
     {
         Pool.OnEnteringPool -= ChangeColorTo;
     }
     
     void Update()
+    
     {
-        if (paintCountDown > 0 && currentColor != defaultColor)
+        if (paintCountDown > 0)
         {
             //Debug.Log("Returning to default color (" + defaultColor.ToString() + ") in " + paintCountDown + " frames");
+            //Debug.Log("Current color: " + base.CurrentColor + " default color: " + defaultColor);
             paintCountDown--;
         }
-        else if (paintCountDown == 0)
+        else if (paintCountDown == 0 && base.CurrentColor != defaultColor)
         {
             //Debug.Log("Returning to default color(" + defaultColor.ToString() + ")");
             ChangeColorTo(defaultColor);
@@ -63,7 +57,7 @@ public class Player : MonoBehaviour
         movement.y = Input.GetAxisRaw("Vertical");
         if (movement.x != 0 || movement.y != 0)
         {
-            animator.SetBool("Running", true);
+            base.Anim.SetBool("Running", true);
 
             
             if (!wasWalking) { // if player starts walking, play walking sound
@@ -75,7 +69,7 @@ public class Player : MonoBehaviour
         }
         else
         {
-            animator.SetBool("Running", false);
+            base.Anim.SetBool("Running", false);
 
             if (wasWalking) { // if player stops walking, stop walking sound
                 StopWalkSound();
@@ -109,29 +103,21 @@ public class Player : MonoBehaviour
         }
     }
 
-    void PlayWalkSound()
+    public override void PlayWalkSound()
     {
-        if (OnPlay != null)
-        {
-            OnPlay("PlayerWalk");
-        }
+        base.PlaySound("PlayerWalk");
     }
 
-    void StopWalkSound()
+    public override void StopWalkSound()
     {
-        if (OnPlay != null)
-        {
-            OnStop("PlayerWalk");
-        }
+        base.StopSound("PlayerWalk");
     }
 
-    void PlayHitSound()
+    public override void PlayHitSound()
     {
-        if (OnPlay != null)
-        {
-            OnPlay("PlayerWalk");
-        }
+        base.PlaySound("PlayerHit");
     }
+
 
     IEnumerator TakeDamage()
     {
@@ -158,17 +144,22 @@ public class Player : MonoBehaviour
 
     public void ChangeColorTo(Color color)
     {
-        Debug.Log("CHANGING COLOR TO: " + color);
-        currentColor = color;
+        Debug.Log("CHANGING COLOR FROM: " + base.CurrentColor + " TO: " + color);
+        base.CurrentColor = color;
         GetComponent<Renderer>().material.color = color;
         paintCountDown = paintFrames;
 
         if (OnColorChange != null)
         {
-            OnColorChange(currentColor);
+            OnColorChange(CurrentColor);
         }
         
         
+    }
+
+    public override void OnCollisionEnter2D(Collision2D collision)
+    {
+
     }
 
 
