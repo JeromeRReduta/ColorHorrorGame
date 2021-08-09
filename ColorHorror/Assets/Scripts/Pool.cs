@@ -30,6 +30,11 @@ public class Pool : MonoBehaviour
     public void ChangeColorTo(Color color) {
         realColor = color;
         GetComponent<Renderer>().material.color = color;
+
+        // for lit version
+        // var block = new MaterialPropertyBlock();
+        // block.SetColor("_BaseColor", color);
+        // GetComponent<Renderer>().SetPropertyBlock(block);
     }
 
     private void OnTriggerEnter2D(Collider2D col)

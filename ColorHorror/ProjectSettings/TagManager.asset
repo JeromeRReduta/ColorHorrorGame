@@ -14,6 +14,13 @@ TagManager:
   - RedPool
   - RedTP
   - YellowTP
+  - Pool
+  - Slot1
+  - Slot2
+  - Slot3
+  - RedBucket
+  - YellowBucket
+  - BlueBucket
   layers:
   - Default
   - TransparentFX
