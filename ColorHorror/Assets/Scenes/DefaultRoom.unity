@@ -549,9 +549,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 057647753e7d4d34e85e3cc41f2ee1cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gotRedBucket: 0
-  gotBlueBucket: 0
-  gotYellowBucket: 0
+  gotRedBucket: 1
+  gotBlueBucket: 1
+  gotYellowBucket: 1
   gotAllBuckets: 0
   isRainbow: 0
 --- !u!114 &236575692

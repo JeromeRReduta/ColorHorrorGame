@@ -142,11 +142,13 @@ public class Player : Mob
         health = 2;
     }
 
-    public void ChangeColorTo(Color color)
+    public void ChangeColorTo(Color color) // Note: Kind of hard to see color change in harsh red light - maybe change material into default when changing back, and change material into lit-default when changing into another color?
     {
         Debug.Log("CHANGING COLOR FROM: " + base.CurrentColor + " TO: " + color);
         base.CurrentColor = color;
+        Debug.Log("Renderer color before: " + GetComponent<Renderer>().material.color);
         GetComponent<Renderer>().material.color = color;
+        Debug.Log("Renderer color after: " + GetComponent<Renderer>().material.color);
         paintCountDown = paintFrames;
 
         if (OnColorChange != null)
