@@ -10,7 +10,8 @@ Red monster behavior:
 1) Move towards player indefinitely
 2) Every 2 seconds, charge towards player location in a straight line until it hits something
 */ 
-public class RedMonsterNew : Monster
+public class RedMonsterNew : NewMonster // TODO: 1) Make changing levels disable the old monsters' aggro, complete w/ stopping sounds
+    // 2) Make red monster charge not track the player (or at least, so closely)
 {
     /** AIPath this monster uses */
     public AIPath Path;
@@ -28,12 +29,26 @@ public class RedMonsterNew : Monster
     [HideInInspector] public Vector3 recoil;
     private int slowDown = 0;
 
-    [SerializeField] private Player player;
-
     public override void Start()
     {
         base.Start();
-        base.color = Color.red;
+        base.CurrentColor = Color.red;
+    }
+
+    public override void DisableAggro()
+    {
+        base.DisableAggro();
+        StopCoroutine( Charge() );
+        completed = true;
+        StopWalkSound();
+        StopChargeSound();
+    }
+
+    public override void EnableAggro()
+    {
+        base.EnableAggro();
+        PlayWalkSound();
+        completed = false;
     }
 
     /**
@@ -41,15 +56,6 @@ public class RedMonsterNew : Monster
     */
     public override void Update()
     {
-
-        if (base.color == player.currentColor)
-        {
-            StopCoroutine(Charge());
-            GetComponent<TempEnemyScript>().aiPath.enabled = false;
-        }
-
-        GetComponent<TempEnemyScript>().aiPath.enabled = true;
-
 
         Vector3 dest = Path.destination;
         RaycastHit2D hit = Physics2D.Linecast(base.Rb.transform.position, dest, LayerMask.GetMask("Walls", "Player"));
@@ -75,13 +81,6 @@ public class RedMonsterNew : Monster
         Debug.DrawLine(chargeLeft.transform.position, dest, Color.blue);
         Debug.DrawLine(chargeRight.transform.position, dest, Color.blue);
     }
-
-    public override void DisableAggro()
-    {
-        base.DisableAggro();
-        StopCoroutine( Charge() );
-    }
-
 
     /**
     Charge at player every 4 seconds
@@ -110,7 +109,6 @@ public class RedMonsterNew : Monster
     IEnumerator FollowPlayerInBetweenCharges()
     {
         Path.enabled = true;
-        
         yield return new WaitForSeconds(1);
         completed = true;
     }
@@ -120,7 +118,7 @@ public class RedMonsterNew : Monster
     public override void OnCollisionEnter2D(Collision2D collision)
     {
         base.OnCollisionEnter2D(collision);
-        base.Audio.Play("RedMonHit"); // plays hit sound no matter what it collides with
+        PlayHitSound(); // plays hit sound no matter what it collides with
         Vector3 reflectVector = collision.contacts[0].normal;
         slowDown++;
         base.Rb.velocity = new Vector2 (0f, 0f);
@@ -131,26 +129,27 @@ public class RedMonsterNew : Monster
 
     public void PlayChargeSound()
     {
-        base.Audio.Play("RedMonCharge");
+        base.PlaySound("RedMonCharge");
     }
 
     public void StopChargeSound()
     {
-        base.Audio.Stop("RedMonCharge");
+        base.StopSound("RedMonCharge");
     }
 
     public override void PlayWalkSound()
     {
-        base.Audio.Play("RedMonWalk");
+        base.PlaySound("RedMonWalk");
     }
 
     public override void StopWalkSound()
     {
-        base.Audio.Stop("RedMonWalk");
+        base.StopSound("RedMonWalk");
     }
 
     public override void PlayHitSound()
     {
-        base.Audio.Play("RedMonHit");
+        base.PlaySound("RedMonHit");
     }
+
 }

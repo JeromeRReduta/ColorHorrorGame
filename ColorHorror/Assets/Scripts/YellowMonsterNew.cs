@@ -2,16 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class YellowMonsterNew : Monster
+public class YellowMonsterNew : NewMonster
 {
 
-
-
     /** Counter used to keep track of current teleport cooldown, in frames */
-    [SerializeField] private static int tpCooldown = 120;
-
-    private int currentCountDown = tpCooldown;
-
+    private static int tpCooldown = 120;
+    private int currentCountDown;
 
     /**
     Attempts to teleport in front of player every x seconds, otherwise chases towards player
@@ -23,7 +19,8 @@ public class YellowMonsterNew : Monster
     public override void Start()
     {
         base.Start();
-        base.color = Color.yellow;
+        base.CurrentColor = Color.yellow;
+        currentCountDown = tpCooldown;
     }
 
     public override void Update()
@@ -113,21 +110,21 @@ public class YellowMonsterNew : Monster
 
     public override void PlayWalkSound()
     {
-        base.Audio.Play("YellowMonWalk");
+        base.PlaySound("YellowMonWalk");
     }
 
     public override void StopWalkSound()
     {
-        base.Audio.Stop("YellowMonWalk");
+        base.StopSound("YellowMonWalk");
     }
 
     public override void PlayHitSound()
     {
-        base.Audio.Play("YellowMonHit");
+        base.PlaySound("YellowMonHit");
     }
 
     public void PlayTeleportSound()
     {
-        base.Audio.Play("YellowMonTP");
+        base.PlaySound("YellowMonTP");
     }
 }
