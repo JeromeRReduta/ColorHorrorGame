@@ -17,7 +17,7 @@ public class MonsterKillZone : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.tag == "Player")
+        if (col.gameObject.tag == "Player" && GlobalVariables.Instance.isRainbow == false)
         {
             RunOverPlayer();
         }
@@ -47,5 +47,13 @@ public class MonsterKillZone : MonoBehaviour
     {
         Vector2 force = (originalLocation - rb.transform.position);
         rb.AddForce(force, ForceMode2D.Impulse);
+    }
+
+    void Update()
+    {
+        if (GlobalVariables.Instance.isRainbow)
+        {
+            rb.isKinematic = true; // makes sure the player can't push the monster when rainbow
+        }
     }
 }

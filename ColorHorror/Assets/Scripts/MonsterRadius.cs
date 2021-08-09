@@ -25,7 +25,7 @@ public class MonsterRadius : MonoBehaviour
             cam.enabled = false;
         }
 
-        if (playerCol.IsTouching(monsterDangerCol))
+        if (playerCol.IsTouching(monsterDangerCol) && GlobalVariables.Instance.isRainbow == false)
         {
             StartCoroutine(cameraShake.Shake(1f, .25f));
         }
