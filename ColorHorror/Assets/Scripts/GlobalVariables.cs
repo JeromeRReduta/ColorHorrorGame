@@ -6,7 +6,7 @@ public class GlobalVariables : MonoBehaviour
 {
     public static GlobalVariables Instance;
     public bool gotRedBucket, gotBlueBucket, gotYellowBucket;
-    [HideInInspector] public bool gotAllBuckets;
+    [HideInInspector] public bool gotAllBuckets, isRainbow;
     void Awake()
     {
         DontDestroyOnLoad(transform.gameObject);

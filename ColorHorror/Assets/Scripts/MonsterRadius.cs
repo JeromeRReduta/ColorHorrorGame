@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class MonsterRadius : MonoBehaviour
 {
+    [SerializeField] CameraShake cameraShake;
     public GameObject player;
-    [SerializeField] GameObject monsterRadius;
+    [SerializeField] GameObject monsterRadius, monsterDangerZone;
 
 
     void Update()
     {
         Collider2D monsterRadCol = monsterRadius.GetComponent<Collider2D>();
+        Collider2D monsterDangerCol = monsterDangerZone.GetComponent<Collider2D>();
         Collider2D playerCol = player.GetComponent<Collider2D>();
         Camera cam = this.gameObject.GetComponentInChildren<Camera>();
 
@@ -21,6 +23,11 @@ public class MonsterRadius : MonoBehaviour
         else
         {
             cam.enabled = false;
+        }
+
+        if (playerCol.IsTouching(monsterDangerCol))
+        {
+            StartCoroutine(cameraShake.Shake(1f, .25f));
         }
     }
 }
