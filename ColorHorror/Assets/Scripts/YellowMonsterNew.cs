@@ -40,7 +40,7 @@ public class YellowMonsterNew : NewMonster
         currentCountDown = tpCooldown;
     }
     
-    public void FixedUpdate() {
+    public override void FixedUpdate() {
 
         if (currentCountDown > 0)
         {

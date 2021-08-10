@@ -15,7 +15,14 @@ public class GlobalVariables : MonoBehaviour
 
     void Start()
     {
-        Instance = this;
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            Instance = this;
+        }
     }
 
     void Update()
@@ -29,7 +36,9 @@ public class GlobalVariables : MonoBehaviour
             gotAllBuckets = false;
         }
     }
-    public void ClickRedButton()
+
+    // TODO: Delete these if not needed?
+    public void ClickRedButton() 
     {
         // redBucket = GameObject.FindGameObjectWithTag("RedBucket");
         gotRedBucket = true;
