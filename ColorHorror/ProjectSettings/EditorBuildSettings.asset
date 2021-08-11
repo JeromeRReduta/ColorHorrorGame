@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/RedSceneNew.unity
     guid: 1d2421af6a9fafb4d8cdb4d2cb9fdeb0
+  - enabled: 1
+    path: Assets/Scenes/YellowTestScene.unity
+    guid: 9e13ac983d5235840bf20a497b44ba62
   m_configObjects: {}
