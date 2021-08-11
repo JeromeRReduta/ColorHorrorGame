@@ -3951,6 +3951,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rainbowMonster: {fileID: 1845608463}
+  levelLoader: {fileID: 1109899610}
 --- !u!61 &1912043878
 BoxCollider2D:
   m_ObjectHideFlags: 0

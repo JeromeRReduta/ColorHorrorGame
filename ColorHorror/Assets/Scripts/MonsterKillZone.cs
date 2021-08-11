@@ -9,7 +9,7 @@ public class MonsterKillZone : MonoBehaviour
     GameObject player;
     Vector3 originalLocation;
     Rigidbody2D rb;
-    LevelLoader levelLoader;
+    public LevelLoader levelLoader;
 
     void Start()
     {
