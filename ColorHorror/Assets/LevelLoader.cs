@@ -105,4 +105,20 @@ public class LevelLoader : MonoBehaviour
         Debug.Log("Loading Death Scene");
     }
 
+    public void LoadMainMenu()
+    {
+        StartCoroutine(LoadMenu());
+    }
+
+    IEnumerator LoadMenu()
+    {
+        //Play Animation
+        transition.SetTrigger("Start");
+        //Wait for anitmation 
+        yield return new WaitForSeconds(transitionTime);
+        //Load scene
+        SceneManager.LoadScene("MainMenu");
+        Debug.Log("Loading Main Menu");
+    }
+
 }

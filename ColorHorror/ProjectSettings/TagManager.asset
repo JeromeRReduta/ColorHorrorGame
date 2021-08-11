@@ -21,6 +21,7 @@ TagManager:
   - RedBucket
   - YellowBucket
   - BlueBucket
+  - CompleteGame
   layers:
   - Default
   - TransparentFX
