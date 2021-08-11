@@ -25,11 +25,18 @@ public abstract class Monster : MonoBehaviour
     /** This monster's rigid body */
     public Rigidbody2D Rb {get; private set;}
 
+    /** This monter's AudioManager */
+    public AudioManager Audio;
+
+    [SerializeField] public Color color;
+
     /** Start */
     public virtual void Start()
     {
         Col = GetComponent<Collider2D>();
-        Rb = gameObject.GetComponent<Rigidbody2D>();
+        Rb = GetComponent<Rigidbody2D>();
+
+        PlayWalkSound();
     }
 
     /** Update func */
@@ -39,7 +46,7 @@ public abstract class Monster : MonoBehaviour
     Collision logic. On collision with anything, the monster stops. On collision with player, attempts to deal damage to player.
     @param collision Collision data
     */
-    public void OnCollisionEnter2D(Collision2D collision)
+    public virtual void OnCollisionEnter2D(Collision2D collision)
     {
         Debug.Log("EH this is fine");
         Rb.velocity = new Vector2(0f, 0f);
@@ -50,7 +57,47 @@ public abstract class Monster : MonoBehaviour
 
         if (string.Equals(collision.gameObject.name, "Player")) { // If monster collides with player, deal damage to player
             Debug.Log("Gottem - dealing 1 damage to player");
+            PlayHitSound();
         }
         
+    }
+
+    public abstract void PlayWalkSound();
+
+    public abstract void StopWalkSound();
+
+    public abstract void PlayHitSound();
+
+    public void TryDisableAggro(Color playerColor)
+    {
+        Debug.Log("MONSTER COLOR == PLAYER COLOR? " + (color == playerColor));
+        Debug.Log(color == playerColor ? "DISABLING" : "ENABLING" + "AGGRO");
+        if (color == playerColor)
+        {
+            DisableAggro();
+        }
+        else
+        {
+            EnableAggro();
+        }
+    }
+
+    public virtual void DisableAggro()
+    {
+        GetComponent<TempEnemyScript>().aiPath.enabled = false;
+    }
+    public virtual void EnableAggro()
+    {
+        GetComponent<TempEnemyScript>().aiPath.enabled = true;
+    }
+
+    void OnEnable()
+    {
+        Player.OnColorChange += TryDisableAggro;
+    }
+
+    void OnDisable()
+    {
+        Player.OnColorChange -= TryDisableAggro;
     }
 }

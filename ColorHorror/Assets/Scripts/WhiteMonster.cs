@@ -10,25 +10,37 @@ WHITE MONSTER BEHAVIOR:
 2) Chase player indefinitely
 3) If it hits player, hurts player for 1 damage and continues chasing
 */
-public class WhiteMonster : Monster // TODO: Spawning logic
+public class WhiteMonster : NewMonster
 {
-
-    public AudioManager audioManager;
-
     public override void Start()
     {
         base.Start();
-        Debug.Log("STARTING SOUND");
-        audioManager.Play("MonsterWalk");
+        base.CurrentColor = Color.white;
     }
-    /**
-    Does nothing, since A* algorithm handles all movement logic 
-    */
-    public override void Update()
+
+    public override void PlayWalkSound()
     {
+        base.PlaySound("WhiteMonWalk");
     }
 
+    public override void StopWalkSound()
+    {
+        base.StopSound("WhiteMonWalk");
+    }
 
+    public override void PlayHitSound()
+    {
+        base.PlaySound("WhiteMonHit");
+    }
 
+    // Note: Must override onenable and ondisable, as white monsters never de-aggro player
+    public override void OnEnable()
+    {
 
+    }
+
+    public override void OnDisable()
+    {
+
+    }
 }

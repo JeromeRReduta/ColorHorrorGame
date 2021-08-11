@@ -621,6 +621,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 1157711979}
+  levelLoader: {fileID: 2131467473}
 --- !u!1 &2025907650
 GameObject:
   m_ObjectHideFlags: 0

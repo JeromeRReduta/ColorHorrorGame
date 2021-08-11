@@ -10,7 +10,8 @@ Red monster behavior:
 1) Move towards player indefinitely
 2) Every 2 seconds, charge towards player location in a straight line until it hits something
 */ 
-public class RedMonsterNew : Monster
+public class RedMonsterNew : NewMonster // TODO: 1) Make changing levels disable the old monsters' aggro, complete w/ stopping sounds
+    // 2) Make red monster charge not track the player (or at least, so closely)
 {
     /** AIPath this monster uses */
     public AIPath Path;
@@ -28,11 +29,34 @@ public class RedMonsterNew : Monster
     [HideInInspector] public Vector3 recoil;
     private int slowDown = 0;
 
+    public override void Start()
+    {
+        base.Start();
+        base.CurrentColor = Color.red;
+    }
+
+    public override void DisableAggro()
+    {
+        base.DisableAggro();
+        StopCoroutine( Charge() );
+        completed = true;
+        StopWalkSound();
+        StopChargeSound();
+    }
+
+    public override void EnableAggro()
+    {
+        base.EnableAggro();
+        PlayWalkSound();
+        completed = false;
+    }
+
     /**
     Attempts to charge at player every 4 seconds
     */
     public override void Update()
     {
+
         Vector3 dest = Path.destination;
         RaycastHit2D hit = Physics2D.Linecast(base.Rb.transform.position, dest, LayerMask.GetMask("Walls", "Player"));
         RaycastHit2D hitUp = Physics2D.Linecast(chargeUp.transform.position, dest, LayerMask.GetMask("Walls", "Player"));
@@ -40,7 +64,7 @@ public class RedMonsterNew : Monster
         RaycastHit2D hitRight = Physics2D.Linecast(chargeRight.transform.position, dest, LayerMask.GetMask("Walls", "Player"));
         RaycastHit2D hitLeft = Physics2D.Linecast(chargeLeft.transform.position, dest, LayerMask.GetMask("Walls", "Player"));
 
-        if (hit.collider != null && hitUp.collider.gameObject.CompareTag("Player") && hitDown.collider.gameObject.CompareTag("Player") &&
+        if (hit.collider != null && hitUp.collider.gameObject.CompareTag("Player") && hitDown.collider.gameObject.CompareTag("Player") && // error - bug here
             hitRight.collider.gameObject.CompareTag("Player") && hitLeft.collider.gameObject.CompareTag("Player") && completed)
         {
             completed = false;
@@ -63,6 +87,8 @@ public class RedMonsterNew : Monster
     */
     IEnumerator Charge() // TODO: Make red monster walk towards player when not charging (low-priority)
     {
+        StopWalkSound();
+        PlayChargeSound();
         Vector3 charge = (Path.destination - gameObject.transform.position).normalized * chargeSpeed;
         slowDown = 0;
         recoil = charge.normalized;
@@ -71,9 +97,9 @@ public class RedMonsterNew : Monster
 
         base.Rb.velocity = new Vector2 (0f, 0f);
         base.Rb.AddForce(charge, ForceMode2D.Impulse);
-        
         yield return new WaitForSeconds(4);
-        
+        PlayWalkSound(); // TODO: Put this before or after wait?
+        StopChargeSound();
         completed = true;
         Path.enabled = true;
         // StartCoroutine(FollowPlayerInBetweenCharges());
@@ -83,15 +109,16 @@ public class RedMonsterNew : Monster
     IEnumerator FollowPlayerInBetweenCharges()
     {
         Path.enabled = true;
-        
         yield return new WaitForSeconds(1);
         completed = true;
     }
 
     // Was thinking of making it so that each monster has a different response to colliding
     // Like Red Monster has recoil momentum for example
-    void OnCollisionEnter2D(Collision2D collision)
+    public override void OnCollisionEnter2D(Collision2D collision)
     {
+        base.OnCollisionEnter2D(collision);
+        PlayHitSound(); // plays hit sound no matter what it collides with
         Vector3 reflectVector = collision.contacts[0].normal;
         slowDown++;
         base.Rb.velocity = new Vector2 (0f, 0f);
@@ -99,4 +126,30 @@ public class RedMonsterNew : Monster
         recoil = base.Rb.velocity.normalized;
 
     }
+
+    public void PlayChargeSound()
+    {
+        base.PlaySound("RedMonCharge");
+    }
+
+    public void StopChargeSound()
+    {
+        base.StopSound("RedMonCharge");
+    }
+
+    public override void PlayWalkSound()
+    {
+        base.PlaySound("RedMonWalk");
+    }
+
+    public override void StopWalkSound()
+    {
+        base.StopSound("RedMonWalk");
+    }
+
+    public override void PlayHitSound()
+    {
+        base.PlaySound("RedMonHit");
+    }
+
 }

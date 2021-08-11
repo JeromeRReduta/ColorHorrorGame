@@ -7,21 +7,23 @@ using UnityEngine;
 public class PlayerLevelLoader : MonoBehaviour
 {
    public GameManagerScriptMain gameManager;
+   public LevelLoader levelLoader;
 
    private void OnTriggerEnter2D(Collider2D col){
         if(col.gameObject.tag == "MainRoomLoader"){
             Debug.Log("I Hit Main Room Loader");
-           gameManager.ChangeToMain();
+            levelLoader.LoadMain();
         }
         if(col.gameObject.tag == "RedTP"){
             Debug.Log("I hit Red TP");
-            gameManager.ChangeToMain();
+            levelLoader.LoadRedScene();
         }
 
         if(col.gameObject.tag == "BlueTP"){
             Debug.Log("I Hit Blue TP");
-           gameManager.ChangeToBlue();
+           levelLoader.LoadBlueScene();
 
-    }
+        }
+   }
 }
-}
+

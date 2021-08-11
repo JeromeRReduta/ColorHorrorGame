@@ -15,6 +15,7 @@ public class GameManagerScriptMain : MonoBehaviour
        levelLoader.LoadBlueScene();
    }
 
+
    public void ChangeToMain()
    {
        levelLoader.LoadMain();
