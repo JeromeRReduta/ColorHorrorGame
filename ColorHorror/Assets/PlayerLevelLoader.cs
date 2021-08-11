@@ -24,6 +24,10 @@ public class PlayerLevelLoader : MonoBehaviour
            levelLoader.LoadBlueScene();
 
         }
+        if(col.gameObject.tag == "YellowTP"){
+            Debug.Log("I hit the yellow TP");
+            levelLoader.LoadYellowScene();
+        }
    }
 }
 
