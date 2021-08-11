@@ -9,6 +9,7 @@ public class MonsterKillZone : MonoBehaviour
     GameObject player;
     Vector3 originalLocation;
     Rigidbody2D rb;
+    LevelLoader levelLoader;
 
     void Start()
     {
@@ -36,12 +37,17 @@ public class MonsterKillZone : MonoBehaviour
        
         Invoke("DisablePlayer", 1f);    
         Invoke("GoBackToLocation", 2f);
+        LoadDeathScene();
     }
 
     void DisablePlayer()
     {
         player.gameObject.SetActive(false);
         rb.velocity = new Vector2 (0f, 0f);
+    }
+
+    void LoadDeathScene(){
+        levelLoader.LoadDeathScene();
     }
     void GoBackToLocation()
     {

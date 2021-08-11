@@ -88,5 +88,21 @@ public class LevelLoader : MonoBehaviour
         SceneManager.LoadScene("YellowTestScene");
         Debug.Log("TPing to yellow room");
     }
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    public void LoadDeathScene()
+    {
+        StartCoroutine(LoadDeath());
+    }
+
+    IEnumerator LoadDeath()
+    {
+        //Play Animation
+        transition.SetTrigger("Start");
+        //Wait for anitmation 
+        yield return new WaitForSeconds(transitionTime);
+        //Load scene
+        SceneManager.LoadScene("DeathScene");
+        Debug.Log("Loading Death Scene");
+    }
 
 }
