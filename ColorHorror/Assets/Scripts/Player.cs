@@ -19,6 +19,7 @@ public class Player : Mob
 
     public int paintFrames = 1800;
     private int paintCountDown = 0;
+    public LevelLoader levelLoader;
 
     void Start()
     {
@@ -138,6 +139,8 @@ public class Player : Mob
 
     void PlayerDeath()
     {
+
+        levelLoader.LoadDeathScene();
         Debug.Log("Player theoretically died.");
         health = 2;
     }

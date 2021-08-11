@@ -799,8 +799,8 @@ MonoBehaviour:
   Playerbody: {fileID: 5635134232649834465}
   movement: {x: 0, y: 0}
   defaultColor: {r: 1, g: 1, b: 1, a: 1}
-  currentColor: {r: 1, g: 1, b: 1, a: 1}
   paintFrames: 1800
+  levelLoader: {fileID: 1749767898801005334, guid: e9d394d2d146d404e8e7431d5f0f07b3, type: 3}
 --- !u!114 &262107139
 MonoBehaviour:
   m_ObjectHideFlags: 0
