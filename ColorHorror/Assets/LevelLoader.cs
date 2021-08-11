@@ -104,7 +104,7 @@ public class LevelLoader : MonoBehaviour
         SceneManager.LoadScene("DeathScene");
         Debug.Log("Loading Death Scene");
     }
-
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public void LoadMainMenu()
     {
         StartCoroutine(LoadMenu());
@@ -119,6 +119,22 @@ public class LevelLoader : MonoBehaviour
         //Load scene
         SceneManager.LoadScene("MainMenu");
         Debug.Log("Loading Main Menu");
+    }
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+     public void CompleteGame()
+    {
+        StartCoroutine(LoadCompletionScreen());
+    }
+
+    IEnumerator LoadCompletionScreen()
+    {
+        //Play Animation
+        transition.SetTrigger("Start");
+        //Wait for anitmation 
+        yield return new WaitForSeconds(transitionTime);
+        //Load scene
+        SceneManager.LoadScene("EscapedScene");
+        Debug.Log("Loading Escaped Scene");
     }
 
 }

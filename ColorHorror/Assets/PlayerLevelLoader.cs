@@ -28,6 +28,11 @@ public class PlayerLevelLoader : MonoBehaviour
             Debug.Log("I hit the yellow TP");
             levelLoader.LoadYellowScene();
         }
+
+        if(col.gameObject.tag == "CompleteGame"){
+            Debug.Log("I End Goal");
+            levelLoader.CompleteGame();
+        }
    }
 }
 
