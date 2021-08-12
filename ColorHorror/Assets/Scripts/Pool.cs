@@ -12,10 +12,12 @@ public class Pool : MonoBehaviour
     public enum PoolColor {Red, Yellow, Blue};
     public PoolColor color;
     private Color realColor;
-    public AudioManager audioManager; // TODO: Get rid of these w/ events
+    private AudioPlayer soundSys;
 
     public void Awake()
     {
+        soundSys = gameObject.AddComponent<AudioPlayer>();
+        
         if (color == PoolColor.Red) {
             ChangeColorTo(Color.red);
         }
@@ -44,7 +46,7 @@ public class Pool : MonoBehaviour
         if ( string.Equals(col.gameObject.tag, "Player") && OnEnteringPool != null )
         {
             Debug.Log("ENTERING POOL");
-            audioManager.Play("EnterPool");
+            soundSys.Play("EnterPool");
 
             Debug.Log("POOL CHANGING PLAYER COLOR TO: " + realColor);
             OnEnteringPool(realColor);

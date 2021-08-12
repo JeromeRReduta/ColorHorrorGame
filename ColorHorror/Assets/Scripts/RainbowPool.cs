@@ -17,16 +17,9 @@ public class RainbowPool : MonoBehaviour
     }
     void Update()
     {
-        if (GlobalVariables.Instance.gotAllBuckets == true)
+        if (GlobalVariables.Instance.gotAllBuckets)
         {
-            if (GlobalVariables.Instance.isRainbow == false)
-            {
-                animationIsReady = true;
-            }
-            else
-            {
-                animationIsReady = false;
-            }
+            animationIsReady = !GlobalVariables.Instance.isRainbow;
         }
         else
         {
@@ -38,9 +31,9 @@ public class RainbowPool : MonoBehaviour
             GlobalVariables.Instance.isRainbow = false;
         }
 
-        if (animationIsReady == true && playerCol.IsTouching(radius))
+        if (animationIsReady && playerCol.IsTouching(radius))
         {
-            if (textHasShown == false)
+            if (!textHasShown)
             {
                 text.SetActive(true);
                 textHasShown = true;
@@ -50,10 +43,8 @@ public class RainbowPool : MonoBehaviour
             {
                 text.SetActive(false);
                 animationIsReady = false;
-                Invoke("AddRed", 0f);
-                Invoke("AddYellow", 1f);
-                Invoke("AddBlue", 2f);
-                Invoke("makeRainbow", 3.2f);
+
+                StartCoroutine( fillPool() );
             }
         }
         else
@@ -63,23 +54,17 @@ public class RainbowPool : MonoBehaviour
         }
     }
 
-    void AddRed()
+    private IEnumerator fillPool()
     {
         bucketAnimRed.Play("AddingPaint");
-    }
-
-    void AddYellow()
-    {
+        yield return new WaitForSeconds(1);
+        
         bucketAnimYellow.Play("AddingPaint");
-    }
+        yield return new WaitForSeconds(1);
 
-    void AddBlue()
-    {
         bucketAnimBlue.Play("AddingPaint");
-    }
+        yield return new WaitForSeconds(1);
 
-    void makeRainbow()
-    {
         emptyPool.gameObject.SetActive(false);
         fullPool.gameObject.SetActive(true);
         lights.gameObject.SetActive(true);

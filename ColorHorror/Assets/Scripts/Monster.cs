@@ -14,89 +14,128 @@ Every monster has the following behavior:
 1) Moves towards players - handled by a* algorithm
 2) Whenever it hits anything, stops. Whenever it hits the player, attempts to damage player.
 */
-public abstract class Monster : MonoBehaviour
+public abstract class Monster : Mob // TODO: rename to "Monster" once done, then delete old "Monster" (low-prio - after cleaning up workspace)
 {
-    // Note: Public typeName X {get; private set;}
-    // means we can call X's value from any other class (implied public get), but can only set its value in this class (private set)
 
-    /** This monster's collider */
-    public Collider2D Col {get; private set;}
+    // Movement and special will be added as components and run separately
 
-    /** This monster's rigid body */
-    public Rigidbody2D Rb {get; private set;}
+    public delegate void SetAggroAction(bool aggroOn);
+    public event SetAggroAction OnChangingAggro;
 
-    /** This monter's AudioManager */
-    public AudioManager Audio;
+    public IMonsterMovement movement;
+    public IMonsterSpecial special;
 
-    [SerializeField] public Color color;
+
+    public enum TypeOfMovement {Base};
+    public TypeOfMovement movementChoice;
+
+    public enum TypeOfSpecial {NoSpecial, Charge, Teleport};
+    public TypeOfSpecial specialChoice;
+
+
+
+
+
 
     /** Start */
-    public virtual void Start()
+    public override void Start()
     {
-        Col = GetComponent<Collider2D>();
-        Rb = GetComponent<Rigidbody2D>();
-
+        base.Start();
         PlayWalkSound();
+        SetMovement();
+        SetSpecial();
     }
 
-    /** Update func */
-    public abstract void Update();
+    public void SetMovement()
+    {
+        if (movementChoice == TypeOfMovement.Base)
+        {
+            movement = new BaseMonsterMovement(this);
+        }
+    }
+
+    public void SetSpecial()
+    {
+        if (specialChoice == TypeOfSpecial.NoSpecial)
+        {
+            special = new NoSpecial(this);
+        }
+        else if (specialChoice == TypeOfSpecial.Charge) // TODO: implement this
+        {
+            special = new Charge(this);
+        }
+        else if (specialChoice == TypeOfSpecial.Teleport)
+        {
+            special = new Teleport(this);
+        }
+    }
+
+    public override void Update()
+    {
+        movement.Update();
+        special.Update();
+
+    }
     
     /**
     Collision logic. On collision with anything, the monster stops. On collision with player, attempts to deal damage to player.
     @param collision Collision data
     */
-    public virtual void OnCollisionEnter2D(Collision2D collision)
+    public override void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("EH this is fine");
-        Rb.velocity = new Vector2(0f, 0f);
-        Debug.Log("GOOD");
-        Debug.Log(collision);
-        Debug.Log("Name is: " + collision.gameObject.name);
-        Debug.Log("string.equals(collision.gameObject.name, Player) is " + string.Equals(collision.gameObject.name, "Player"));
 
+        movement.Collide(collision);
+        special.Collide(collision);
+        
         if (string.Equals(collision.gameObject.name, "Player")) { // If monster collides with player, deal damage to player
             Debug.Log("Gottem - dealing 1 damage to player");
             PlayHitSound();
+
         }
-        
     }
 
-    public abstract void PlayWalkSound();
-
-    public abstract void StopWalkSound();
-
-    public abstract void PlayHitSound();
-
-    public void TryDisableAggro(Color playerColor)
+    public void TryDisableAggro(Color playerColor) // TODO: Change name to "ChangeAggro"
     {
-        Debug.Log("MONSTER COLOR == PLAYER COLOR? " + (color == playerColor));
-        Debug.Log(color == playerColor ? "DISABLING" : "ENABLING" + "AGGRO");
-        if (color == playerColor)
+
+        Debug.Log("current color: " + base.CurrentColor + " player color: " + playerColor);
+        Debug.Log("Equal to each other? " + (base.CurrentColor == playerColor));
+        if (base.CurrentColor == playerColor)
         {
+            Debug.Log("DISABLING AGGRO");
             DisableAggro();
+            movement.Disable();
+            special.Disable();
         }
         else
         {
+            Debug.Log("ENABLING AGGRO");
             EnableAggro();
+            movement.Enable();
+            special.Enable();
         }
     }
 
     public virtual void DisableAggro()
     {
-        GetComponent<TempEnemyScript>().aiPath.enabled = false;
+        if (OnChangingAggro != null)
+        {
+            OnChangingAggro(false);
+        }
     }
     public virtual void EnableAggro()
     {
-        GetComponent<TempEnemyScript>().aiPath.enabled = true;
+        if (OnChangingAggro != null)
+        {
+            OnChangingAggro(true);
+        }
     }
 
-    void OnEnable()
+    public override void OnEnable()
     {
         Player.OnColorChange += TryDisableAggro;
     }
 
-    void OnDisable()
+    public override void OnDisable()
     {
         Player.OnColorChange -= TryDisableAggro;
     }

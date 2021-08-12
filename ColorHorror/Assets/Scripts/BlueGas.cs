@@ -5,37 +5,30 @@ using UnityEngine;
 public class BlueGas : MonoBehaviour
 {
     [SerializeField] GameObject mainLights;
-    [SerializeField] private AudioManager audioManager;
+    private AudioPlayer soundSys;
     Camera cam;
 
     GameObject[] blueGassesLight;
-    GameObject monster;
+    BlueMonster monster;
 
     void Start()
     {
+        soundSys = this.gameObject.AddComponent<AudioPlayer>();
         blueGassesLight = GameObject.FindGameObjectsWithTag("BlueGasLight");
-        monster = GameObject.FindGameObjectWithTag("Monster");
+        monster = GameObject.FindObjectOfType<BlueMonster>();
+
+        if (monster == null) // Case: monster does not have blue monster script attached (note: check blue monster if this runs)
+        {
+            Debug.LogWarning("Warning - could not find blue monster!");
+        }
     }
 
     void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.CompareTag("Player"))
         {
-            mainLights.SetActive(true);
-            cam = this.gameObject.GetComponentInChildren<Camera>();
-
-            audioManager.Play("BreatheGas");
-
-            for (int i = 0; i < blueGassesLight.Length; i++)
-            {
-                blueGassesLight[i].SetActive(false);
-                blueGassesLight[i].GetComponentInParent<Animator>().enabled = false;
-                blueGassesLight[i].GetComponentInParent<SpriteRenderer>().enabled = false;
-            }
-        
-            monster.gameObject.transform.GetChild(0).gameObject.SetActive(false);
-        
-            cam.enabled = true;
+            soundSys.Play("BreatheGas");
+            SetVisibilityTo(false);
         }
 
     }
@@ -44,21 +37,23 @@ public class BlueGas : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Player"))
         {
-            mainLights.SetActive(false);
-            cam = this.gameObject.GetComponentInChildren<Camera>();
+            soundSys.Stop("BreatheGas");
+            SetVisibilityTo(true);
+        }
+    }
 
-            audioManager.Stop("BreatheGas");
+    private void SetVisibilityTo(bool canSeeBlue)
+    {
+            mainLights.SetActive(!canSeeBlue);
+            this.gameObject.GetComponentInChildren<Camera>().enabled = !canSeeBlue;
 
             for (int i = 0; i < blueGassesLight.Length; i++)
             {
-                blueGassesLight[i].SetActive(true);
-                blueGassesLight[i].GetComponentInParent<Animator>().enabled = true;
-                blueGassesLight[i].GetComponentInParent<SpriteRenderer>().enabled = true;
+                blueGassesLight[i].SetActive(canSeeBlue);
+                blueGassesLight[i].GetComponentInParent<Animator>().enabled = canSeeBlue;
+                blueGassesLight[i].GetComponentInParent<SpriteRenderer>().enabled = canSeeBlue;
             }
 
-            monster.gameObject.transform.GetChild(0).gameObject.SetActive(true);
-
-            cam.enabled = false;
-        }
+            monster.gameObject.SetActive(canSeeBlue);
     }
 }

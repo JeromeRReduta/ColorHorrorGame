@@ -10,63 +10,39 @@ Red monster behavior:
 1) Move towards player indefinitely
 2) Every 2 seconds, charge towards player location in a straight line until it hits something
 */ 
-public class RedMonster : Monster
+public class RedMonster : Monster // TODO: 1) Make changing levels disable the old monsters' aggro, complete w/ stopping sounds
+    // 2) Make red monster charge not track the player (or at least, so closely)
 {
-    /** AIPath this monster uses */
-    public AIPath Path;
-
-    /** Charge speed */
-    public int chargeSpeed = 200;
-
-    /** Whether the monster is NOT charging */
-    private bool completed = true;
-
-    /**
-    Attempts to charge at player every 2 seconds
-    */
-    public override void Update()
+    public override void Start()
     {
-        Vector3 dest = Path.destination;
-        RaycastHit2D hit = Physics2D.Linecast(base.Rb.transform.position, dest, LayerMask.GetMask("Walls", "Player"));
-        if (hit.collider != null && hit.collider.gameObject.CompareTag("Player") && completed)
-        {
-            completed = false;
-            StartCoroutine(Charge());
-        }
-        
-        Debug.DrawLine(gameObject.transform.position, dest, Color.blue);
+        base.Start();
+        base.CurrentColor = Color.red;
     }
 
-    /**
-    Charge at player every 2 seconds
-    */
-    IEnumerator Charge() // TODO: Make red monster walk towards player when not charging (low-priority)
+
+    public void PlayChargeSound()
     {
-        Vector3 charge = (Path.destination - gameObject.transform.position).normalized * chargeSpeed;
-        Path.enabled = false;
+        base.PlaySound("RedMonCharge");
+    }
 
-        base.Rb.velocity = new Vector2 (0f, 0f);
-        base.Rb.AddForce(charge, ForceMode2D.Impulse);
-        
-        yield return new WaitForSeconds(1);
-
-        Path.enabled = true;
-        completed = true;
-        
+    public void StopChargeSound()
+    {
+        base.StopSound("RedMonCharge");
     }
 
     public override void PlayWalkSound()
     {
-        base.Audio.Play("RedMonWalk");
+        base.PlaySound("RedMonWalk");
     }
 
-        public override void StopWalkSound()
+    public override void StopWalkSound()
     {
-        base.Audio.Stop("RedMonWalk");
+        base.StopSound("RedMonWalk");
     }
 
     public override void PlayHitSound()
     {
-        base.Audio.Play("RedMonHit");
+        base.PlaySound("RedMonHit");
     }
+
 }
