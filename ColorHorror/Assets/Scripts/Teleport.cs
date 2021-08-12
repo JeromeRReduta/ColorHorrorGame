@@ -2,11 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class YellowMonsterNew : NewMonster
+/**
+A monster's special pattern
+*/
+public class Teleport : IMonsterSpecial
 {
 
-    /** Counter used to keep track of current teleport cooldown, in frames */
-    private static int tpCooldown = 600;
+    private Monster monster;
+
+       /** Counter used to keep track of current teleport cooldown, in frames */
+    private static int tpCooldown = 1200;
     private int currentCountDown;
 
     /**
@@ -16,17 +21,17 @@ public class YellowMonsterNew : NewMonster
     public Vector3 FuturePoint {get; private set;}
     float rayCastLength;
 
-    public override void Start()
+    // Movement: Base; Special: Teleport
+    public Teleport(Monster monster)
     {
-        base.Start();
-        base.CurrentColor = Color.yellow;
+        this.monster = monster;
         currentCountDown = tpCooldown;
     }
 
 
-    public override void Update() {
+    public void Update() {
         //Debug.Log("CD: " + currentCountDown);
-        Debug.Log("Player movement: - x: " + Player.Instance.movement.x + " y: " + Player.Instance.movement.y);
+        //Debug.Log("Player movement: - x: " + Player.Instance.movement.x + " y: " + Player.Instance.movement.y);
         if (currentCountDown > 0)
         {
             currentCountDown--;
@@ -47,19 +52,19 @@ public class YellowMonsterNew : NewMonster
         Vector3 playerPos = Player.Instance.gameObject.transform.position;
         float rayCastLength = Player.Instance.CharacterSpeed * 0.7f;
         bool canTPInFrontOfPlayer = Physics2D.Raycast(playerPos, PlayerOrientation, rayCastLength, 
-                    LayerMask.GetMask("Walls" , "Monster")).collider == null;
+                    LayerMask.GetMask("Walls" , "Room", "Monster")).collider == null;
         bool canTPBehindPlayer = Physics2D.Raycast(playerPos, PlayerOrientation * -1, rayCastLength, 
-                    LayerMask.GetMask("Walls" , "Monster")).collider == null;
+                    LayerMask.GetMask("Walls" , "Room", "Monster")).collider == null;
 
         if (canTPInFrontOfPlayer)
         {
-            this.transform.position = new Vector3(playerPos.x + (PlayerOrientation.x * rayCastLength), playerPos.y + (PlayerOrientation.y * rayCastLength), playerPos.z);
-            PlayTeleportSound(); 
+            monster.transform.position = new Vector3(playerPos.x + (PlayerOrientation.x * rayCastLength), playerPos.y + (PlayerOrientation.y * rayCastLength), playerPos.z);
+            monster.PlaySound("YellowMonTP"); 
         }
         else if (canTPBehindPlayer)
         {
-            this.transform.position = new Vector3(playerPos.x - (PlayerOrientation.x * rayCastLength), playerPos.y - (PlayerOrientation.y * rayCastLength), playerPos.z);
-            PlayTeleportSound();
+            monster.transform.position = new Vector3(playerPos.x - (PlayerOrientation.x * rayCastLength), playerPos.y - (PlayerOrientation.y * rayCastLength), playerPos.z);
+            monster.PlaySound("YellowMonTP");
         }
     }
 
@@ -88,24 +93,30 @@ public class YellowMonsterNew : NewMonster
         return PlayerOrientation;
 
     }
-
-    public override void PlayWalkSound()
+    public void SetTP(bool isOn)
     {
-        base.PlaySound("YellowMonWalk");
+        Debug.Log("SETTING TP COOLDOWN TO : " + (isOn ? "1200" : "-1"));
+        currentCountDown = isOn ? tpCooldown : -1;
     }
 
-    public override void StopWalkSound()
+    public void Disable()
     {
-        base.StopSound("YellowMonWalk");
+        currentCountDown = -1;
     }
 
-    public override void PlayHitSound()
+    public void Enable()
     {
-        base.PlaySound("YellowMonHit");
+        if (currentCountDown <= 0)
+        {
+            currentCountDown = tpCooldown;
+        }
     }
 
-    public void PlayTeleportSound()
+    public void Collide(Collision2D collision)
     {
-        base.PlaySound("YellowMonTP");
+        
     }
+
+
+
 }

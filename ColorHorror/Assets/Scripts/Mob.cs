@@ -4,20 +4,6 @@ using UnityEngine;
 
 public abstract class Mob : MonoBehaviour // TODO: Make abstract class that all mobs inherit from?
 {
-    /** Delegate for PlaySoundAction
-    @param name name of sound
-    */
-    public delegate void PlaySoundAction(string name);
-    /** OnPlay event */
-    public static event PlaySoundAction OnPlay;
-
-    /** Delegate for StopSoundAction
-    @param name name of sound
-    */
-    public delegate void StopSoundAction(string name);
-    /** OnStop event */
-    public static event StopSoundAction OnStop;
-
     /** RigidBody2D */
     public Rigidbody2D Rb {get; private set;}
 
@@ -30,6 +16,8 @@ public abstract class Mob : MonoBehaviour // TODO: Make abstract class that all 
     /** This mob's current color */
     public Color CurrentColor {get; set;}
 
+    private AudioPlayer soundSys;
+
     /** Start function. Sets the rigidbody, collider, and animator.
     Note that when overriding this Start() method, you'll also need to
     set the color */
@@ -38,6 +26,8 @@ public abstract class Mob : MonoBehaviour // TODO: Make abstract class that all 
         Rb = GetComponent<Rigidbody2D>();
         Col = GetComponent<Collider2D>();
         Anim = GetComponent<Animator>();
+        soundSys = this.gameObject.AddComponent<AudioPlayer>();
+        Debug.Log("soundsys null IN START?" + (soundSys == null));
     }
 
     /** Plays this mob's walk sound */
@@ -74,17 +64,13 @@ public abstract class Mob : MonoBehaviour // TODO: Make abstract class that all 
     // TODO: For each mob, just make PlayWalkSound, PlayHitSound, etc. just call the proper PlaySound(name) name
     public void PlaySound(string name)
     {
-        if (OnPlay != null)
-        {
-            OnPlay(name);
-        }
+        Debug.Log("sound sys null?: " + (soundSys == null));
+        Debug.Log("string is: " + name);
+        soundSys.Play(name);
     }
 
     public void StopSound(string name)
     {
-        if (OnStop != null)
-        {
-            OnStop(name);
-        }
+        soundSys.Stop(name);
     }
 }

@@ -21,7 +21,7 @@ public class Player : Mob
     private int paintCountDown = 0;
     public LevelLoader levelLoader;
 
-    void Start()
+    public override void Start()
     {
         base.Start();
         base.CurrentColor = defaultColor;
@@ -38,7 +38,7 @@ public class Player : Mob
         Pool.OnEnteringPool -= ChangeColorTo;
     }
     
-    void Update()
+    public override void Update()
     
     {
         if (paintCountDown > 0)
@@ -91,7 +91,7 @@ public class Player : Mob
         CollideWithMonster();
     }
 
-    void FixedUpdate()
+    public override void FixedUpdate()
     {
         Playerbody.MovePosition(Playerbody.position + movement * CharacterSpeed * Time.fixedDeltaTime);
     }

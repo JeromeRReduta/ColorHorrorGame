@@ -10,7 +10,7 @@ WHITE MONSTER BEHAVIOR:
 2) Chase player indefinitely
 3) If it hits player, hurts player for 1 damage and continues chasing
 */
-public class WhiteMonster : NewMonster
+public class WhiteMonsterRedo : Monster
 {
     public override void Start()
     {
