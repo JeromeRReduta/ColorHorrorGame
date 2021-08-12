@@ -1017,6 +1017,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4062765912622542502}
     - target: {fileID: 9166422897763004783, guid: 549c8038ac9742f478c4c4243650a56f, type: 3}
+      propertyPath: MonsterPrefab
+      value: 
+      objectReference: {fileID: 4240781715833635648, guid: 8d60d7f10d049774f9b95ff90a4f382b, type: 3}
+    - target: {fileID: 9166422897763004783, guid: 549c8038ac9742f478c4c4243650a56f, type: 3}
       propertyPath: monsterPrefab
       value: 
       objectReference: {fileID: 5568442611195786989, guid: 9f8009bd4be888c4eb9f45f26c216de3, type: 3}
@@ -1790,8 +1794,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 573756714}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3, y: -42.3, z: -10}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 2.6724024, y: -50.338715, z: -651.69183}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -4048,6 +4052,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: {fileID: 1588879030}
   chargeSpeed: 25
+  chargeCurrentCooldown: 0
   chargeUp: {fileID: 331831853}
   chargeDown: {fileID: 52806245}
   chargeRight: {fileID: 1219549030}
@@ -4241,6 +4246,10 @@ PrefabInstance:
     - target: {fileID: 3390934179019174393, guid: 359210c233895184da643dcabeab5a7d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3390934179019174394, guid: 359210c233895184da643dcabeab5a7d, type: 3}
+      propertyPath: masterVolume
+      value: 0.488
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 359210c233895184da643dcabeab5a7d, type: 3}
@@ -5101,6 +5110,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Blue Monster
       objectReference: {fileID: 0}
+    - target: {fileID: 783479874638548735, guid: 850b2488176775c4eb6c3836d6a18343, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 4062765912622542502}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 850b2488176775c4eb6c3836d6a18343, type: 3}
 --- !u!1001 &4062765912622542501
@@ -5170,6 +5183,10 @@ PrefabInstance:
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 1986963365}
+    - target: {fileID: 7151579262531977350, guid: 3c681e28b7be99740868b963941edf25, type: 3}
+      propertyPath: levelLoader
+      value: 
+      objectReference: {fileID: 1494239016}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c681e28b7be99740868b963941edf25, type: 3}
 --- !u!4 &4062765912622542502 stripped
