@@ -684,6 +684,17 @@ PrefabInstance:
       objectReference: {fileID: 1614996584}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c13063f2a4f0ed4caeba2a4ddf24c0d, type: 3}
+--- !u!114 &1100214497 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6576585295908714695, guid: 9c13063f2a4f0ed4caeba2a4ddf24c0d, type: 3}
+  m_PrefabInstance: {fileID: 1100214496}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4735f45ca29c07f4c9f800a280788114, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1163059782
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1179,7 +1190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0b6547431a815940b815c977a5f936b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
+  gameManager: {fileID: 1100214497}
   levelLoader: {fileID: 1614996584}
 --- !u!1001 &5930003997137688748
 PrefabInstance:
@@ -1235,6 +1246,10 @@ PrefabInstance:
     - target: {fileID: 5930003999112592478, guid: 7edbf544d88720a40bc11ce2aee175f6, type: 3}
       propertyPath: m_Name
       value: A*
+      objectReference: {fileID: 0}
+    - target: {fileID: 5930003999112592479, guid: 7edbf544d88720a40bc11ce2aee175f6, type: 3}
+      propertyPath: data.dataString
+      value: UEsDBBQAAAgIAACYn+tU9n4qbgIAABEFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFlVE1z2jAQ/SuMziVjOwZDby0Q0kM+JrSTiy/CWmMNsuSR5ADJ8N+7kgV26Qnxdvfp7duVvwiXpoHCKr3WnD0pBuT7iLgz+Tbqg49wpDslN/wTLjnvnNnKJVGf80YtV4jHrsyoGqzmxQ+5Ey45QrCVvFS6XrEdLJSxBuGSCgMY0sq6aonQ14gc8Wc8dyUnPCWZO33iaR6NzngsQFrQfWp0F82ySZJM4lAxTu/vZuk0i6ZpqBxnCERpdL8aR1NP0spC0LoB5jrquSbTwJHOfJrEXkOGYy+UENwEocSeGm/EpqlAg3OCcYp9e3Hx3QSBCviusq6LYfVLWRqwwRZNT0uu0cCOlvxUnas1NftO2AcVrVeQdKI60qf/4uPYh0ut6sfLvXHk7rAVL/Zv9FRQYwe2D+HlQLr350DFnm4FvFcgn9Vaq1YyDFrdutLWQLLs/15bW1RQ7Hu8k3oDts1geMHvy4xdD2ff/XEheL318007YCOUN9yvBmgczS8U7BfHBApEnYo/Bn7T3XDDQuCBa2MxFLqUTt5Wtdqlkgc8OOeL1i6UluDRoLkBSYU9vSKLvZ3gTWxw603kgbqnFO4OscsLuSnxcJ8fRTehV3W4zspU6vAEpnppreASetEu8Iw2LZSU3YINLbmUbVpd0mJQtms5+3ezyCzebqezLMkSNolhS8dJOcvmZZlO8J0BzOfErx6X2CcVr53QYA8OTfbkEtfs8oUZrTVt/LIzTQ9r/lmrgeVclmpTaAD50jFchYPGS/BVshXjaNAGrOXSj5t85USoYg8svxLlvtPV0Wqa9yw5afiHsg7JycJ/UnJyJue/UEsDBBQAAAgIAACYn+sqzvDJbQAAAHgAAAAJACQAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0Bq1YqSy0qzszPU7JSMNEz0jM01VFQSi9KLMgoBooYgjilmSkgdrSShWFSkpmFuZG5UYqpYWpSoq5RmoW5ZVqaiamJmXlqqqWlUixQfUllQapfYm4qRE9AYklGWmZeSmZeup57UWaKO8hopdhaAFBLAQItABQAAAgIAACYn+tU9n4qbgIAABEFAAALACQAAAAAAAAAAAAAAAAAAABncmFwaDAuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLAQItABQAAAgIAACYn+sqzvDJbQAAAHgAAAAJACQAAAAAAAAAAAAAALsCAABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwUGAAAAAAIAAgC4AAAAcwMAAAAA
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7edbf544d88720a40bc11ce2aee175f6, type: 3}
