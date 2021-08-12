@@ -9,37 +9,28 @@ public class TempEnemyScript : MonoBehaviour // TODO: Merge this into monster
     Animator animator;
     Rigidbody2D rb;
 
+    IAstarAI AStar;
+
     void Start()
     {
         animator = GetComponent<Animator>();
         rb = GetComponentInParent<Rigidbody2D>();
+        AStar = GetComponent<IAstarAI>(); // Note: Must get reference to IAstarAI to get velocity, not IAstarAI.velocity itself, so velocity updates every frame
     }
     void Update()
     {
-        
+        //bool isMoving = vel.x != 0f || vel.y != 0f;
+        //animator.SetBool("Running", isMoving); // Note:Animator is set to go from entry -> running, so it will always play running animation - bool unnecessary
 
-        if (aiPath.desiredVelocity.x >= 0.01f || rb.velocity.x >= 0.01f)
+
+        if (AStar.velocity.x > 0f) // Case: Enemy moving to the right -> keep local scale same
         {
             transform.localScale = new Vector3(1f, 1f, 1f);
         }
-        else if (aiPath.desiredVelocity.x <= -0.01f || rb.velocity.x <= 0.01f)
+        else if (AStar.velocity.x < 0f) // Case: Enemy moving to the left -> reverse local scale, essentially flipping the character model horizontally
         {
             transform.localScale = new Vector3(-1f, 1f, 1f);
         }
-        else 
-        {
-            return;
-        }
-
-        float distX = Mathf.Abs(gameObject.transform.position.x - aiPath.destination.x);
-        float distY = Mathf.Abs(gameObject.transform.position.y - aiPath.destination.y);
-        if (distX <= 1.2f || distY <= 1.2f)
-        {
-            animator.SetBool("Running", false);
-        }
-        else
-        {
-            animator.SetBool("Running", true);
-        }
+        // Case: Enemy not moving - don't change local scale/change which way model is facing
     }
 }

@@ -54,6 +54,6 @@ public class BlueGas : MonoBehaviour
                 blueGassesLight[i].GetComponentInParent<SpriteRenderer>().enabled = canSeeBlue;
             }
 
-            monster.gameObject.transform.GetChild(0).gameObject.SetActive(canSeeBlue);
+            monster.gameObject.SetActive(canSeeBlue);
     }
 }

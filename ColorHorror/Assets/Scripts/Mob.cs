@@ -27,6 +27,7 @@ public abstract class Mob : MonoBehaviour // TODO: Make abstract class that all 
         Col = GetComponent<Collider2D>();
         Anim = GetComponent<Animator>();
         soundSys = this.gameObject.AddComponent<AudioPlayer>();
+        Debug.Log("soundsys null IN START?" + (soundSys == null));
     }
 
     /** Plays this mob's walk sound */
@@ -63,6 +64,8 @@ public abstract class Mob : MonoBehaviour // TODO: Make abstract class that all 
     // TODO: For each mob, just make PlayWalkSound, PlayHitSound, etc. just call the proper PlaySound(name) name
     public void PlaySound(string name)
     {
+        Debug.Log("sound sys null?: " + (soundSys == null));
+        Debug.Log("string is: " + name);
         soundSys.Play(name);
     }
 

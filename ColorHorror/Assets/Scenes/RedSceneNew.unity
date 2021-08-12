@@ -1760,6 +1760,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Monster Spawner
       objectReference: {fileID: 0}
+    - target: {fileID: 9166422897763004780, guid: 549c8038ac9742f478c4c4243650a56f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9166422897763004782, guid: 549c8038ac9742f478c4c4243650a56f, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1816,6 +1820,10 @@ PrefabInstance:
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 1091826110}
+    - target: {fileID: 9166422897763004783, guid: 549c8038ac9742f478c4c4243650a56f, type: 3}
+      propertyPath: MonsterPrefab
+      value: 
+      objectReference: {fileID: 4240781715833635648, guid: 8d60d7f10d049774f9b95ff90a4f382b, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 549c8038ac9742f478c4c4243650a56f, type: 3}
 --- !u!1 &357965436
@@ -5755,8 +5763,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 925292320}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 58.9, y: -0.9, z: -10}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -24.945717, y: 55.933483, z: -568.5682}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -6763,8 +6771,20 @@ PrefabInstance:
       value: AudioManager
       objectReference: {fileID: 0}
     - target: {fileID: 2126500089954462159, guid: 2a69984623a487a4598357ae3ce65fa5, type: 3}
+      propertyPath: masterVolume
+      value: 0.527
+      objectReference: {fileID: 0}
+    - target: {fileID: 2126500089954462159, guid: 2a69984623a487a4598357ae3ce65fa5, type: 3}
+      propertyPath: sounds.Array.data[8].pitch
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2126500089954462159, guid: 2a69984623a487a4598357ae3ce65fa5, type: 3}
       propertyPath: sounds.Array.data[0].volume
       value: 0.116
+      objectReference: {fileID: 0}
+    - target: {fileID: 2126500089954462159, guid: 2a69984623a487a4598357ae3ce65fa5, type: 3}
+      propertyPath: sounds.Array.data[6].volume
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a69984623a487a4598357ae3ce65fa5, type: 3}
@@ -9480,10 +9500,9 @@ GameObject:
   - component: {fileID: 1480679472}
   - component: {fileID: 1480679471}
   - component: {fileID: 1480679470}
-  - component: {fileID: 1480679469}
   - component: {fileID: 1480679468}
-  - component: {fileID: 1480679476}
   - component: {fileID: 1480679477}
+  - component: {fileID: 1480679469}
   m_Layer: 9
   m_Name: RedMonster
   m_TagString: Monster
@@ -9512,16 +9531,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1480679467}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf2ce02bf7384fd4284880ff87c7b0e9, type: 3}
+  m_Script: {fileID: 11500000, guid: 96f35a14aaeff5e4c9d2e444dd578c6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Path: {fileID: 1480679472}
-  chargeSpeed: 25
-  chargeUp: {fileID: 1713287381}
-  chargeDown: {fileID: 773272461}
-  chargeRight: {fileID: 1102672679}
-  chargeLeft: {fileID: 49898}
-  recoil: {x: 0, y: 0, z: 0}
+  movementChoice: 0
+  specialChoice: 1
 --- !u!50 &1480679470
 Rigidbody2D:
   serializedVersion: 4
@@ -9656,19 +9670,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1480679476
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1480679467}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 614813c0667922f45a77cdf56941420e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  aiPath: {fileID: 1480679472}
 --- !u!95 &1480679477
 Animator:
   serializedVersion: 3

@@ -19,27 +19,32 @@ public class RedMonsterNew : NewMonster // TODO: 1) Make changing levels disable
     /** Charge speed */
     public int chargeSpeed = 20;
 
+    public static int chargeDefaultCooldown = 3000;
+    [SerializeField] private int chargeCurrentCooldown;
+
     /** Whether the monster is NOT charging */
-    private bool completed = true;
+    private bool currentlyCharging;
 
     /** Stores the locations of the origins of the raycasts */
     [SerializeField] GameObject chargeUp, chargeDown, chargeRight, chargeLeft;
 
     /** Adds backwards momentum after hitting a collider */
     [HideInInspector] public Vector3 recoil;
-    private int slowDown = 0;
+    private int numOfBounces = 0; // TODO: Better name (e.g. numOfBouncesCounter)
 
     public override void Start()
     {
         base.Start();
         base.CurrentColor = Color.red;
+        chargeCurrentCooldown = chargeDefaultCooldown;
+        currentlyCharging = false;
     }
 
     public override void DisableAggro()
     {
         base.DisableAggro();
-        StopCoroutine( Charge() );
-        completed = true;
+        base.Rb.velocity = Vector2.zero;
+        currentlyCharging = false;
         StopWalkSound();
         StopChargeSound();
     }
@@ -48,7 +53,7 @@ public class RedMonsterNew : NewMonster // TODO: 1) Make changing levels disable
     {
         base.EnableAggro();
         PlayWalkSound();
-        completed = false;
+        currentlyCharging = true;
     }
 
     /**
@@ -56,61 +61,51 @@ public class RedMonsterNew : NewMonster // TODO: 1) Make changing levels disable
     */
     public override void Update()
     {
-
-        Vector3 dest = Path.destination;
-        RaycastHit2D hit = Physics2D.Linecast(base.Rb.transform.position, dest, LayerMask.GetMask("Walls", "Player"));
-        RaycastHit2D hitUp = Physics2D.Linecast(chargeUp.transform.position, dest, LayerMask.GetMask("Walls", "Player"));
-        RaycastHit2D hitDown = Physics2D.Linecast(chargeDown.transform.position, dest, LayerMask.GetMask("Walls", "Player"));
-        RaycastHit2D hitRight = Physics2D.Linecast(chargeRight.transform.position, dest, LayerMask.GetMask("Walls", "Player"));
-        RaycastHit2D hitLeft = Physics2D.Linecast(chargeLeft.transform.position, dest, LayerMask.GetMask("Walls", "Player"));
-
-        if (hit.collider != null && hitUp.collider.gameObject.CompareTag("Player") && hitDown.collider.gameObject.CompareTag("Player") && // error - bug here
-            hitRight.collider.gameObject.CompareTag("Player") && hitLeft.collider.gameObject.CompareTag("Player") && completed)
+        if (chargeCurrentCooldown > 0)
         {
-            completed = false;
-            StartCoroutine(Charge());
+            chargeCurrentCooldown--;
         }
-        if (slowDown > 3)
+        else if (chargeCurrentCooldown == 0 && !currentlyCharging)
+        {
+            RaycastHit2D ThingInLineOfSight = Physics2D.Linecast(base.Rb.transform.position, Path.destination, LayerMask.GetMask("Walls", "Player"));
+
+            if (ThingInLineOfSight != null
+                && ThingInLineOfSight.collider != null
+                && ThingInLineOfSight.collider.gameObject != null
+                && ThingInLineOfSight.collider.gameObject.CompareTag("Player"))
             {
-                base.Rb.velocity = new Vector2 (0f, 0f); 
-                Path.enabled = true;
+                Debug.Log("CHAAAAAAAAAAAAAAAAAAAAAAARGE");
+                Path.enabled = false;
+                currentlyCharging = true;
+                Charge();
             }
-        
-        Debug.DrawLine(chargeUp.transform.position, dest, Color.blue);
-        Debug.DrawLine(chargeDown.transform.position, dest, Color.blue);
-        Debug.DrawLine(chargeLeft.transform.position, dest, Color.blue);
-        Debug.DrawLine(chargeRight.transform.position, dest, Color.blue);
+
+        }
+        else if (currentlyCharging && numOfBounces > 3)
+        {
+            base.Rb.velocity = new Vector2 (0f, 0f); 
+            Path.enabled = true;
+            currentlyCharging = false;
+            chargeCurrentCooldown = chargeDefaultCooldown;
+        }
     }
 
     /**
     Charge at player every 4 seconds
     */
-    IEnumerator Charge() // TODO: Make red monster walk towards player when not charging (low-priority)
+    void Charge() // TODO: Make red monster walk towards player when not charging (low-priority)
     {
         StopWalkSound();
         PlayChargeSound();
         Vector3 charge = (Path.destination - gameObject.transform.position).normalized * chargeSpeed;
-        slowDown = 0;
+        numOfBounces = 0;
         recoil = charge.normalized;
 
-        Path.enabled = false;
 
         base.Rb.velocity = new Vector2 (0f, 0f);
         base.Rb.AddForce(charge, ForceMode2D.Impulse);
-        yield return new WaitForSeconds(4);
-        PlayWalkSound(); // TODO: Put this before or after wait?
-        StopChargeSound();
-        completed = true;
-        Path.enabled = true;
-        // StartCoroutine(FollowPlayerInBetweenCharges());
-        
-    }
 
-    IEnumerator FollowPlayerInBetweenCharges()
-    {
-        Path.enabled = true;
-        yield return new WaitForSeconds(1);
-        completed = true;
+        
     }
 
     // Was thinking of making it so that each monster has a different response to colliding
@@ -119,10 +114,11 @@ public class RedMonsterNew : NewMonster // TODO: 1) Make changing levels disable
     {
         base.OnCollisionEnter2D(collision);
         PlayHitSound(); // plays hit sound no matter what it collides with
-        Vector3 reflectVector = collision.contacts[0].normal;
-        slowDown++;
-        base.Rb.velocity = new Vector2 (0f, 0f);
-        base.Rb.velocity = Vector3.Reflect(recoil, reflectVector) * 20;
+        if (currentlyCharging)
+        {
+            numOfBounces++;
+        }
+        base.Rb.velocity = (Path.destination - gameObject.transform.position).normalized * chargeSpeed; // Note: whenever red monster bounces, it attempts to charge towards player
         recoil = base.Rb.velocity.normalized;
 
     }

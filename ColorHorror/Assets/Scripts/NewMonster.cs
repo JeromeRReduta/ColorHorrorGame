@@ -18,7 +18,7 @@ public abstract class NewMonster : Mob // TODO: rename to "Monster" once done, t
 {
 
     /** Start */
-    public override void Start()
+    public virtual void Start()
     {
         base.Start();
         PlayWalkSound();

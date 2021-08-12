@@ -8,11 +8,14 @@ AudioManager class, taken from https://www.youtube.com/watch?v=6OT43pvUyfY&ab_ch
 public class AudioManager : MonoBehaviour
 {
     [SerializeField] private Sound[] sounds;
+    [SerializeField] [Range(0f, 1f)] private float masterVolume;
+
 
     public static AudioManager instance; // using Singleton pattern here to have the same AudioManager throughout every scene
     // Note: This is to deal with a problem we don't have yet. Therefore, this is untested. If there are still multiple copies of AudioManagers
     // when we switch to new scenes, it's probably a result of this code
-    void Awake ()
+
+      void Awake ()
     {
         if (instance == null) {
             instance = this;
@@ -30,7 +33,7 @@ public class AudioManager : MonoBehaviour
             Debug.Log("SOUND: " + sound + " SOURCE: " + sound.source);
            
             source.clip = sound.clip;
-            source.volume = sound.volume;
+            source.volume = sound.volume * masterVolume;
             source.pitch = sound.pitch;
             source.loop = sound.loop;
         }
